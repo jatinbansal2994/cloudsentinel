@@ -1,0 +1,28 @@
+# docker/Dockerfile.inference
+# ────────────────────────────
+# SageMaker inference container.
+# Build: docker build -f docker/Dockerfile.inference -t cloudsentinel-inference .
+# Test:  docker run -p 8080:8080 cloudsentinel-inference
+#        curl -X POST localhost:8080/invocations -H 'Content-Type: application/json' \
+#             -d '{"response_time_ms": 850, "error_rate": 0.5, "requests_per_sec": 10, "cpu_percent": 95, "memory_percent": 88}'
+
+FROM python:3.11-slim
+
+WORKDIR /app
+
+RUN pip install --no-cache-dir \
+    flask==3.0.0 \
+    scikit-learn==1.4.0 \
+    numpy==1.26.0 \
+    gunicorn==21.2.0
+
+COPY ml/inference/serve.py .
+
+# Model artifacts must exist before building this image.
+# Run: python ml/training/train.py   first.
+COPY ml/training/model/ model/
+
+EXPOSE 8080
+
+# Gunicorn = production WSGI server (Flask dev server is single-threaded)
+CMD ["gunicorn", "-b", "0.0.0.0:8080", "serve:app", "--workers", "2", "--timeout", "60"]

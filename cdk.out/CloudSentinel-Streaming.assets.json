@@ -1,0 +1,21 @@
+{
+  "version": "53.0.0",
+  "files": {
+    "5f7b194c118b5f154ce61aa612b3f30df1f75a2e4485a10ccc93b85f6be7fc51": {
+      "displayName": "CloudSentinel-Streaming Template",
+      "source": {
+        "path": "CloudSentinel-Streaming.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "current_account-us-east-1-bb41165c": {
+          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-us-east-1",
+          "objectKey": "5f7b194c118b5f154ce61aa612b3f30df1f75a2e4485a10ccc93b85f6be7fc51.json",
+          "region": "us-east-1",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-us-east-1"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}

@@ -1,0 +1,314 @@
+{
+  "/CloudSentinel-Frontend": [
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "Kernel._Kernel_create (/tmp/tmpl_lsb6pm/lib/program.js:1:61273)",
+        "Kernel.create (/tmp/tmpl_lsb6pm/lib/program.js:1:52004)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    },
+    {
+      "type": "aws:cdk:stack-tags",
+      "data": [
+        {
+          "key": "ManagedBy",
+          "value": "CDK-Python"
+        },
+        {
+          "key": "Project",
+          "value": "CloudSentinel"
+        }
+      ]
+    }
+  ],
+  "/CloudSentinel-Frontend/Custom::S3AutoDeleteObjectsCustomResourceProvider": [
+    {
+      "type": "aws:cdk:is-custom-resource-handler-customResourceProvider",
+      "data": true
+    }
+  ],
+  "/CloudSentinel-Frontend/CloudFrontUrl": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CloudFrontUrl"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "Kernel._Kernel_create (/tmp/tmpl_lsb6pm/lib/program.js:1:61273)",
+        "Kernel.create (/tmp/tmpl_lsb6pm/lib/program.js:1:52004)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Frontend/SiteBucketName": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "SiteBucketName"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "Kernel._Kernel_create (/tmp/tmpl_lsb6pm/lib/program.js:1:61273)",
+        "Kernel.create (/tmp/tmpl_lsb6pm/lib/program.js:1:52004)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Frontend/ApiEndpoint": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ApiEndpoint"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "Kernel._Kernel_create (/tmp/tmpl_lsb6pm/lib/program.js:1:61273)",
+        "Kernel.create (/tmp/tmpl_lsb6pm/lib/program.js:1:52004)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Frontend/UserPoolId": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "UserPoolId"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "Kernel._Kernel_create (/tmp/tmpl_lsb6pm/lib/program.js:1:61273)",
+        "Kernel.create (/tmp/tmpl_lsb6pm/lib/program.js:1:52004)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Frontend/UserPoolClientId": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "UserPoolClientId"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "Kernel._Kernel_create (/tmp/tmpl_lsb6pm/lib/program.js:1:61273)",
+        "Kernel.create (/tmp/tmpl_lsb6pm/lib/program.js:1:52004)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Frontend/BootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BootstrapVersion"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "/tmp/tmpl_lsb6pm/lib/program.js:1:543 (/tmp/tmpl_lsb6pm/lib/program.js:1:5434)",
+        "Kernel._Kernel_ensureSync (/tmp/tmpl_lsb6pm/lib/program.js:1:69992)",
+        "Kernel.invoke (/tmp/tmpl_lsb6pm/lib/program.js:1:54294)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Frontend/CheckBootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CheckBootstrapVersion"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "/tmp/tmpl_lsb6pm/lib/program.js:1:543 (/tmp/tmpl_lsb6pm/lib/program.js:1:5434)",
+        "Kernel._Kernel_ensureSync (/tmp/tmpl_lsb6pm/lib/program.js:1:69992)",
+        "Kernel.invoke (/tmp/tmpl_lsb6pm/lib/program.js:1:54294)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Frontend/SiteBucket/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "SiteBucket397A1860"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Bucket2 in aws-cdk-lib...",
+        "Kernel._Kernel_create (/tmp/tmpl_lsb6pm/lib/program.js:1:61273)",
+        "Kernel.create (/tmp/tmpl_lsb6pm/lib/program.js:1:52004)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    },
+    {
+      "type": "aws:cdk:analytics:mixin",
+      "data": {
+        "mixin": "aws-cdk-lib.aws_s3.mixins.BucketAutoDeleteObjects"
+      }
+    }
+  ],
+  "/CloudSentinel-Frontend/Custom::S3AutoDeleteObjectsCustomResourceProvider/Role": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Bucket2 in aws-cdk-lib...",
+        "Kernel._Kernel_create (/tmp/tmpl_lsb6pm/lib/program.js:1:61273)",
+        "Kernel.create (/tmp/tmpl_lsb6pm/lib/program.js:1:52004)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Frontend/Custom::S3AutoDeleteObjectsCustomResourceProvider/Handler": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CustomS3AutoDeleteObjectsCustomResourceProviderHandler9D90184F"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Bucket2 in aws-cdk-lib...",
+        "Kernel._Kernel_create (/tmp/tmpl_lsb6pm/lib/program.js:1:61273)",
+        "Kernel.create (/tmp/tmpl_lsb6pm/lib/program.js:1:52004)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Frontend/SiteDist/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "SiteDistE3DA6676"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Distribution2 in aws-cdk-lib...",
+        "Kernel._Kernel_create (/tmp/tmpl_lsb6pm/lib/program.js:1:61273)",
+        "Kernel.create (/tmp/tmpl_lsb6pm/lib/program.js:1:52004)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Frontend/CDKMetadata/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadata"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "/tmp/tmpl_lsb6pm/lib/program.js:1:543 (/tmp/tmpl_lsb6pm/lib/program.js:1:5434)",
+        "Kernel._Kernel_ensureSync (/tmp/tmpl_lsb6pm/lib/program.js:1:69992)",
+        "Kernel.invoke (/tmp/tmpl_lsb6pm/lib/program.js:1:54294)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Frontend/SiteBucket/Policy/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "SiteBucketPolicy3AC1D0F8"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Bucket2 in aws-cdk-lib...",
+        "Kernel._Kernel_create (/tmp/tmpl_lsb6pm/lib/program.js:1:61273)",
+        "Kernel.create (/tmp/tmpl_lsb6pm/lib/program.js:1:52004)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    },
+    {
+      "type": "aws:cdk:analytics:mixin",
+      "data": {
+        "mixin": "aws-cdk-lib.aws_s3.mixins.BucketPolicyStatements"
+      }
+    }
+  ],
+  "/CloudSentinel-Frontend/SiteBucket/AutoDeleteObjectsCustomResource/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "SiteBucketAutoDeleteObjectsCustomResource9585E968"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Bucket2 in aws-cdk-lib...",
+        "Kernel._Kernel_create (/tmp/tmpl_lsb6pm/lib/program.js:1:61273)",
+        "Kernel.create (/tmp/tmpl_lsb6pm/lib/program.js:1:52004)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Frontend/SiteDist/Origin1/S3Origin/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "SiteDistOrigin1S3Origin46318948"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Distribution2 in aws-cdk-lib...",
+        "Kernel._Kernel_create (/tmp/tmpl_lsb6pm/lib/program.js:1:61273)",
+        "Kernel.create (/tmp/tmpl_lsb6pm/lib/program.js:1:52004)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ]
+}

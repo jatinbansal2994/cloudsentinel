@@ -1,0 +1,755 @@
+{
+  "/CloudSentinel-Compute": [
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "Kernel._Kernel_create (/tmp/tmpl_lsb6pm/lib/program.js:1:61273)",
+        "Kernel.create (/tmp/tmpl_lsb6pm/lib/program.js:1:52004)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    },
+    {
+      "type": "aws:cdk:stack-tags",
+      "data": [
+        {
+          "key": "ManagedBy",
+          "value": "CDK-Python"
+        },
+        {
+          "key": "Project",
+          "value": "CloudSentinel"
+        }
+      ]
+    }
+  ],
+  "/CloudSentinel-Compute/ApiUrl": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ApiUrl"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "Kernel._Kernel_create (/tmp/tmpl_lsb6pm/lib/program.js:1:61273)",
+        "Kernel.create (/tmp/tmpl_lsb6pm/lib/program.js:1:52004)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Compute/BootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BootstrapVersion"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "/tmp/tmpl_lsb6pm/lib/program.js:1:543 (/tmp/tmpl_lsb6pm/lib/program.js:1:5434)",
+        "Kernel._Kernel_ensureSync (/tmp/tmpl_lsb6pm/lib/program.js:1:69992)",
+        "Kernel.invoke (/tmp/tmpl_lsb6pm/lib/program.js:1:54294)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Compute/CheckBootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CheckBootstrapVersion"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "/tmp/tmpl_lsb6pm/lib/program.js:1:543 (/tmp/tmpl_lsb6pm/lib/program.js:1:5434)",
+        "Kernel._Kernel_ensureSync (/tmp/tmpl_lsb6pm/lib/program.js:1:69992)",
+        "Kernel.invoke (/tmp/tmpl_lsb6pm/lib/program.js:1:54294)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Compute/StreamProcessor/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "StreamProcessorA985C501"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Function2 in aws-cdk-lib...",
+        "Kernel._Kernel_create (/tmp/tmpl_lsb6pm/lib/program.js:1:61273)",
+        "Kernel.create (/tmp/tmpl_lsb6pm/lib/program.js:1:52004)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Compute/ApiHandler/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ApiHandler5E7490E8"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Function2 in aws-cdk-lib...",
+        "Kernel._Kernel_create (/tmp/tmpl_lsb6pm/lib/program.js:1:61273)",
+        "Kernel.create (/tmp/tmpl_lsb6pm/lib/program.js:1:52004)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Compute/Api/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ApiF70053CD"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new RestApi2 in aws-cdk-lib...",
+        "Kernel._Kernel_create (/tmp/tmpl_lsb6pm/lib/program.js:1:61273)",
+        "Kernel.create (/tmp/tmpl_lsb6pm/lib/program.js:1:52004)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Compute/Api/Account": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ApiAccountA18C9B29"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new RestApi2 in aws-cdk-lib...",
+        "Kernel._Kernel_create (/tmp/tmpl_lsb6pm/lib/program.js:1:61273)",
+        "Kernel.create (/tmp/tmpl_lsb6pm/lib/program.js:1:52004)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Compute/Api/Endpoint": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ApiEndpoint4F160690"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new RestApi2 in aws-cdk-lib...",
+        "Kernel._Kernel_create (/tmp/tmpl_lsb6pm/lib/program.js:1:61273)",
+        "Kernel.create (/tmp/tmpl_lsb6pm/lib/program.js:1:52004)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Compute/Authorizer/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "AuthorizerBD825682"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new CognitoUserPoolsAuthorizer2 in aws-cdk-lib...",
+        "Kernel._Kernel_create (/tmp/tmpl_lsb6pm/lib/program.js:1:61273)",
+        "Kernel.create (/tmp/tmpl_lsb6pm/lib/program.js:1:52004)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Compute/CDKMetadata/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadata"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "/tmp/tmpl_lsb6pm/lib/program.js:1:543 (/tmp/tmpl_lsb6pm/lib/program.js:1:5434)",
+        "Kernel._Kernel_ensureSync (/tmp/tmpl_lsb6pm/lib/program.js:1:69992)",
+        "Kernel.invoke (/tmp/tmpl_lsb6pm/lib/program.js:1:54294)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Compute/Exports/Output{\"Ref\":\"ApiF70053CD\"}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputRefApiF70053CD5653BA4D"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "/tmp/tmpl_lsb6pm/lib/program.js:1:543 (/tmp/tmpl_lsb6pm/lib/program.js:1:5434)",
+        "Kernel._Kernel_ensureSync (/tmp/tmpl_lsb6pm/lib/program.js:1:69992)",
+        "Kernel.invoke (/tmp/tmpl_lsb6pm/lib/program.js:1:54294)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Compute/Exports/Output{\"Ref\":\"ApiDeploymentStagev102147F91\"}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputRefApiDeploymentStagev102147F91576080D6"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "/tmp/tmpl_lsb6pm/lib/program.js:1:543 (/tmp/tmpl_lsb6pm/lib/program.js:1:5434)",
+        "Kernel._Kernel_ensureSync (/tmp/tmpl_lsb6pm/lib/program.js:1:69992)",
+        "Kernel.invoke (/tmp/tmpl_lsb6pm/lib/program.js:1:54294)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Compute/StreamProcessor/ServiceRole/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "StreamProcessorServiceRole38F6612A"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Function2 in aws-cdk-lib...",
+        "Kernel._Kernel_create (/tmp/tmpl_lsb6pm/lib/program.js:1:61273)",
+        "Kernel.create (/tmp/tmpl_lsb6pm/lib/program.js:1:52004)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Compute/StreamProcessor/KinesisEventSource:CloudSentinelStreamingTelemetryStreamA48EC65A/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "StreamProcessorKinesisEventSourceCloudSentinelStreamingTelemetryStreamA48EC65A23757BCA"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addEventSource in aws-cdk-lib...",
+        "/tmp/tmpl_lsb6pm/lib/program.js:1:543 (/tmp/tmpl_lsb6pm/lib/program.js:1:5434)",
+        "Kernel._Kernel_ensureSync (/tmp/tmpl_lsb6pm/lib/program.js:1:69992)",
+        "Kernel.invoke (/tmp/tmpl_lsb6pm/lib/program.js:1:54294)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Compute/ApiHandler/ServiceRole/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ApiHandlerServiceRole592E70E9"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Function2 in aws-cdk-lib...",
+        "Kernel._Kernel_create (/tmp/tmpl_lsb6pm/lib/program.js:1:61273)",
+        "Kernel.create (/tmp/tmpl_lsb6pm/lib/program.js:1:52004)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Compute/Api/CloudWatchRole/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ApiCloudWatchRole73EC6FC4"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new RestApi2 in aws-cdk-lib...",
+        "Kernel._Kernel_create (/tmp/tmpl_lsb6pm/lib/program.js:1:61273)",
+        "Kernel.create (/tmp/tmpl_lsb6pm/lib/program.js:1:52004)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Compute/Api/Deployment/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ApiDeploymentB17BE62Dd64b7eff0536308c4c43ade6df92ed17"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new RestApi2 in aws-cdk-lib...",
+        "Kernel._Kernel_create (/tmp/tmpl_lsb6pm/lib/program.js:1:61273)",
+        "Kernel.create (/tmp/tmpl_lsb6pm/lib/program.js:1:52004)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Compute/Api/DeploymentStage.v1/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ApiDeploymentStagev102147F91"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new RestApi2 in aws-cdk-lib...",
+        "Kernel._Kernel_create (/tmp/tmpl_lsb6pm/lib/program.js:1:61273)",
+        "Kernel.create (/tmp/tmpl_lsb6pm/lib/program.js:1:52004)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Compute/StreamProcessor/ServiceRole/DefaultPolicy/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "StreamProcessorServiceRoleDefaultPolicy25F89E31"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addEventSource in aws-cdk-lib...",
+        "/tmp/tmpl_lsb6pm/lib/program.js:1:543 (/tmp/tmpl_lsb6pm/lib/program.js:1:5434)",
+        "Kernel._Kernel_ensureSync (/tmp/tmpl_lsb6pm/lib/program.js:1:69992)",
+        "Kernel.invoke (/tmp/tmpl_lsb6pm/lib/program.js:1:54294)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Compute/ApiHandler/ServiceRole/DefaultPolicy/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ApiHandlerServiceRoleDefaultPolicy10321D87"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.grantReadWriteData in aws-cdk-lib...",
+        "/tmp/tmpl_lsb6pm/lib/program.js:1:543 (/tmp/tmpl_lsb6pm/lib/program.js:1:5434)",
+        "Kernel._Kernel_ensureSync (/tmp/tmpl_lsb6pm/lib/program.js:1:69992)",
+        "Kernel.invoke (/tmp/tmpl_lsb6pm/lib/program.js:1:54294)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Compute/Api/Default/OPTIONS/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ApiOPTIONS5886EA5D"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new RestApi2 in aws-cdk-lib...",
+        "Kernel._Kernel_create (/tmp/tmpl_lsb6pm/lib/program.js:1:61273)",
+        "Kernel.create (/tmp/tmpl_lsb6pm/lib/program.js:1:52004)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Compute/Api/Default/ingest/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "Apiingest05B9F664"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...RootResource.addResource in aws-cdk-lib...",
+        "/tmp/tmpl_lsb6pm/lib/program.js:1:543 (/tmp/tmpl_lsb6pm/lib/program.js:1:5434)",
+        "Kernel._Kernel_ensureSync (/tmp/tmpl_lsb6pm/lib/program.js:1:69992)",
+        "Kernel.invoke (/tmp/tmpl_lsb6pm/lib/program.js:1:54294)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Compute/Api/Default/alerts/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ApialertsE6EAD9C9"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...RootResource.addResource in aws-cdk-lib...",
+        "/tmp/tmpl_lsb6pm/lib/program.js:1:543 (/tmp/tmpl_lsb6pm/lib/program.js:1:5434)",
+        "Kernel._Kernel_ensureSync (/tmp/tmpl_lsb6pm/lib/program.js:1:69992)",
+        "Kernel.invoke (/tmp/tmpl_lsb6pm/lib/program.js:1:54294)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Compute/Api/Default/tenants/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ApitenantsDB35E736"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...RootResource.addResource in aws-cdk-lib...",
+        "/tmp/tmpl_lsb6pm/lib/program.js:1:543 (/tmp/tmpl_lsb6pm/lib/program.js:1:5434)",
+        "Kernel._Kernel_ensureSync (/tmp/tmpl_lsb6pm/lib/program.js:1:69992)",
+        "Kernel.invoke (/tmp/tmpl_lsb6pm/lib/program.js:1:54294)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Compute/Api/Default/ingest/OPTIONS/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ApiingestOPTIONS6BCD2190"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...RootResource.addResource in aws-cdk-lib...",
+        "/tmp/tmpl_lsb6pm/lib/program.js:1:543 (/tmp/tmpl_lsb6pm/lib/program.js:1:5434)",
+        "Kernel._Kernel_ensureSync (/tmp/tmpl_lsb6pm/lib/program.js:1:69992)",
+        "Kernel.invoke (/tmp/tmpl_lsb6pm/lib/program.js:1:54294)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Compute/Api/Default/ingest/POST/ApiPermission.CloudSentinelComputeApiE0D6BB8F.POST..ingest": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ApiingestPOSTApiPermissionCloudSentinelComputeApiE0D6BB8FPOSTingest08CDA0A0"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "/tmp/tmpl_lsb6pm/lib/program.js:1:543 (/tmp/tmpl_lsb6pm/lib/program.js:1:5434)",
+        "Kernel._Kernel_ensureSync (/tmp/tmpl_lsb6pm/lib/program.js:1:69992)",
+        "Kernel.invoke (/tmp/tmpl_lsb6pm/lib/program.js:1:54294)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Compute/Api/Default/ingest/POST/ApiPermission.Test.CloudSentinelComputeApiE0D6BB8F.POST..ingest": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ApiingestPOSTApiPermissionTestCloudSentinelComputeApiE0D6BB8FPOSTingest89463132"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "/tmp/tmpl_lsb6pm/lib/program.js:1:543 (/tmp/tmpl_lsb6pm/lib/program.js:1:5434)",
+        "Kernel._Kernel_ensureSync (/tmp/tmpl_lsb6pm/lib/program.js:1:69992)",
+        "Kernel.invoke (/tmp/tmpl_lsb6pm/lib/program.js:1:54294)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Compute/Api/Default/ingest/POST/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ApiingestPOSTF4D4DF82"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "/tmp/tmpl_lsb6pm/lib/program.js:1:543 (/tmp/tmpl_lsb6pm/lib/program.js:1:5434)",
+        "Kernel._Kernel_ensureSync (/tmp/tmpl_lsb6pm/lib/program.js:1:69992)",
+        "Kernel.invoke (/tmp/tmpl_lsb6pm/lib/program.js:1:54294)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Compute/Api/Default/alerts/OPTIONS/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ApialertsOPTIONSB847EADD"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...RootResource.addResource in aws-cdk-lib...",
+        "/tmp/tmpl_lsb6pm/lib/program.js:1:543 (/tmp/tmpl_lsb6pm/lib/program.js:1:5434)",
+        "Kernel._Kernel_ensureSync (/tmp/tmpl_lsb6pm/lib/program.js:1:69992)",
+        "Kernel.invoke (/tmp/tmpl_lsb6pm/lib/program.js:1:54294)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Compute/Api/Default/alerts/GET/ApiPermission.CloudSentinelComputeApiE0D6BB8F.GET..alerts": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ApialertsGETApiPermissionCloudSentinelComputeApiE0D6BB8FGETalerts9BA670CA"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "/tmp/tmpl_lsb6pm/lib/program.js:1:543 (/tmp/tmpl_lsb6pm/lib/program.js:1:5434)",
+        "Kernel._Kernel_ensureSync (/tmp/tmpl_lsb6pm/lib/program.js:1:69992)",
+        "Kernel.invoke (/tmp/tmpl_lsb6pm/lib/program.js:1:54294)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Compute/Api/Default/alerts/GET/ApiPermission.Test.CloudSentinelComputeApiE0D6BB8F.GET..alerts": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ApialertsGETApiPermissionTestCloudSentinelComputeApiE0D6BB8FGETalerts859A09CE"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "/tmp/tmpl_lsb6pm/lib/program.js:1:543 (/tmp/tmpl_lsb6pm/lib/program.js:1:5434)",
+        "Kernel._Kernel_ensureSync (/tmp/tmpl_lsb6pm/lib/program.js:1:69992)",
+        "Kernel.invoke (/tmp/tmpl_lsb6pm/lib/program.js:1:54294)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Compute/Api/Default/alerts/GET/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ApialertsGET511D6612"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "/tmp/tmpl_lsb6pm/lib/program.js:1:543 (/tmp/tmpl_lsb6pm/lib/program.js:1:5434)",
+        "Kernel._Kernel_ensureSync (/tmp/tmpl_lsb6pm/lib/program.js:1:69992)",
+        "Kernel.invoke (/tmp/tmpl_lsb6pm/lib/program.js:1:54294)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Compute/Api/Default/tenants/OPTIONS/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ApitenantsOPTIONS1441E43C"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...RootResource.addResource in aws-cdk-lib...",
+        "/tmp/tmpl_lsb6pm/lib/program.js:1:543 (/tmp/tmpl_lsb6pm/lib/program.js:1:5434)",
+        "Kernel._Kernel_ensureSync (/tmp/tmpl_lsb6pm/lib/program.js:1:69992)",
+        "Kernel.invoke (/tmp/tmpl_lsb6pm/lib/program.js:1:54294)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Compute/Api/Default/tenants/GET/ApiPermission.CloudSentinelComputeApiE0D6BB8F.GET..tenants": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ApitenantsGETApiPermissionCloudSentinelComputeApiE0D6BB8FGETtenantsB480EC8E"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "/tmp/tmpl_lsb6pm/lib/program.js:1:543 (/tmp/tmpl_lsb6pm/lib/program.js:1:5434)",
+        "Kernel._Kernel_ensureSync (/tmp/tmpl_lsb6pm/lib/program.js:1:69992)",
+        "Kernel.invoke (/tmp/tmpl_lsb6pm/lib/program.js:1:54294)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Compute/Api/Default/tenants/GET/ApiPermission.Test.CloudSentinelComputeApiE0D6BB8F.GET..tenants": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ApitenantsGETApiPermissionTestCloudSentinelComputeApiE0D6BB8FGETtenants1B629856"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "/tmp/tmpl_lsb6pm/lib/program.js:1:543 (/tmp/tmpl_lsb6pm/lib/program.js:1:5434)",
+        "Kernel._Kernel_ensureSync (/tmp/tmpl_lsb6pm/lib/program.js:1:69992)",
+        "Kernel.invoke (/tmp/tmpl_lsb6pm/lib/program.js:1:54294)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Compute/Api/Default/tenants/GET/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ApitenantsGETC6AC87A8"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "/tmp/tmpl_lsb6pm/lib/program.js:1:543 (/tmp/tmpl_lsb6pm/lib/program.js:1:5434)",
+        "Kernel._Kernel_ensureSync (/tmp/tmpl_lsb6pm/lib/program.js:1:69992)",
+        "Kernel.invoke (/tmp/tmpl_lsb6pm/lib/program.js:1:54294)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Compute/Api/Default/tenants/POST/ApiPermission.CloudSentinelComputeApiE0D6BB8F.POST..tenants": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ApitenantsPOSTApiPermissionCloudSentinelComputeApiE0D6BB8FPOSTtenants92EB8C3B"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "/tmp/tmpl_lsb6pm/lib/program.js:1:543 (/tmp/tmpl_lsb6pm/lib/program.js:1:5434)",
+        "Kernel._Kernel_ensureSync (/tmp/tmpl_lsb6pm/lib/program.js:1:69992)",
+        "Kernel.invoke (/tmp/tmpl_lsb6pm/lib/program.js:1:54294)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Compute/Api/Default/tenants/POST/ApiPermission.Test.CloudSentinelComputeApiE0D6BB8F.POST..tenants": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ApitenantsPOSTApiPermissionTestCloudSentinelComputeApiE0D6BB8FPOSTtenantsCEC62754"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "/tmp/tmpl_lsb6pm/lib/program.js:1:543 (/tmp/tmpl_lsb6pm/lib/program.js:1:5434)",
+        "Kernel._Kernel_ensureSync (/tmp/tmpl_lsb6pm/lib/program.js:1:69992)",
+        "Kernel.invoke (/tmp/tmpl_lsb6pm/lib/program.js:1:54294)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Compute/Api/Default/tenants/POST/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ApitenantsPOST8DC9229B"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "/tmp/tmpl_lsb6pm/lib/program.js:1:543 (/tmp/tmpl_lsb6pm/lib/program.js:1:5434)",
+        "Kernel._Kernel_ensureSync (/tmp/tmpl_lsb6pm/lib/program.js:1:69992)",
+        "Kernel.invoke (/tmp/tmpl_lsb6pm/lib/program.js:1:54294)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ]
+}

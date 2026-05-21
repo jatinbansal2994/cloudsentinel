@@ -1,0 +1,213 @@
+{
+  "/CloudSentinel-Auth": [
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "Kernel._Kernel_create (/tmp/tmpl_lsb6pm/lib/program.js:1:61273)",
+        "Kernel.create (/tmp/tmpl_lsb6pm/lib/program.js:1:52004)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    },
+    {
+      "type": "aws:cdk:stack-tags",
+      "data": [
+        {
+          "key": "ManagedBy",
+          "value": "CDK-Python"
+        },
+        {
+          "key": "Project",
+          "value": "CloudSentinel"
+        }
+      ]
+    }
+  ],
+  "/CloudSentinel-Auth/UserPoolId": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "UserPoolId"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "Kernel._Kernel_create (/tmp/tmpl_lsb6pm/lib/program.js:1:61273)",
+        "Kernel.create (/tmp/tmpl_lsb6pm/lib/program.js:1:52004)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Auth/UserPoolClientId": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "UserPoolClientId"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "Kernel._Kernel_create (/tmp/tmpl_lsb6pm/lib/program.js:1:61273)",
+        "Kernel.create (/tmp/tmpl_lsb6pm/lib/program.js:1:52004)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Auth/BootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BootstrapVersion"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "/tmp/tmpl_lsb6pm/lib/program.js:1:543 (/tmp/tmpl_lsb6pm/lib/program.js:1:5434)",
+        "Kernel._Kernel_ensureSync (/tmp/tmpl_lsb6pm/lib/program.js:1:69992)",
+        "Kernel.invoke (/tmp/tmpl_lsb6pm/lib/program.js:1:54294)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Auth/CheckBootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CheckBootstrapVersion"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "/tmp/tmpl_lsb6pm/lib/program.js:1:543 (/tmp/tmpl_lsb6pm/lib/program.js:1:5434)",
+        "Kernel._Kernel_ensureSync (/tmp/tmpl_lsb6pm/lib/program.js:1:69992)",
+        "Kernel.invoke (/tmp/tmpl_lsb6pm/lib/program.js:1:54294)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Auth/TenantUserPool/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "TenantUserPool3CC661A0"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new UserPool2 in aws-cdk-lib...",
+        "Kernel._Kernel_create (/tmp/tmpl_lsb6pm/lib/program.js:1:61273)",
+        "Kernel.create (/tmp/tmpl_lsb6pm/lib/program.js:1:52004)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Auth/CDKMetadata/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadata"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "/tmp/tmpl_lsb6pm/lib/program.js:1:543 (/tmp/tmpl_lsb6pm/lib/program.js:1:5434)",
+        "Kernel._Kernel_ensureSync (/tmp/tmpl_lsb6pm/lib/program.js:1:69992)",
+        "Kernel.invoke (/tmp/tmpl_lsb6pm/lib/program.js:1:54294)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Auth/Exports/Output{\"Fn::GetAtt\":[\"TenantUserPool3CC661A0\",\"Arn\"]}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputFnGetAttTenantUserPool3CC661A0Arn9588048A"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "/tmp/tmpl_lsb6pm/lib/program.js:1:543 (/tmp/tmpl_lsb6pm/lib/program.js:1:5434)",
+        "Kernel._Kernel_ensureSync (/tmp/tmpl_lsb6pm/lib/program.js:1:69992)",
+        "Kernel.invoke (/tmp/tmpl_lsb6pm/lib/program.js:1:54294)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Auth/Exports/Output{\"Ref\":\"TenantUserPool3CC661A0\"}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputRefTenantUserPool3CC661A0AB715003"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "/tmp/tmpl_lsb6pm/lib/program.js:1:543 (/tmp/tmpl_lsb6pm/lib/program.js:1:5434)",
+        "Kernel._Kernel_ensureSync (/tmp/tmpl_lsb6pm/lib/program.js:1:69992)",
+        "Kernel.invoke (/tmp/tmpl_lsb6pm/lib/program.js:1:54294)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Auth/Exports/Output{\"Ref\":\"TenantUserPoolWebClient0042B1AE\"}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputRefTenantUserPoolWebClient0042B1AEF84EB5E2"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "/tmp/tmpl_lsb6pm/lib/program.js:1:543 (/tmp/tmpl_lsb6pm/lib/program.js:1:5434)",
+        "Kernel._Kernel_ensureSync (/tmp/tmpl_lsb6pm/lib/program.js:1:69992)",
+        "Kernel.invoke (/tmp/tmpl_lsb6pm/lib/program.js:1:54294)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Auth/TenantUserPool/WebClient/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "TenantUserPoolWebClient0042B1AE"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addClient in aws-cdk-lib...",
+        "/tmp/tmpl_lsb6pm/lib/program.js:1:543 (/tmp/tmpl_lsb6pm/lib/program.js:1:5434)",
+        "Kernel._Kernel_ensureSync (/tmp/tmpl_lsb6pm/lib/program.js:1:69992)",
+        "Kernel.invoke (/tmp/tmpl_lsb6pm/lib/program.js:1:54294)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ]
+}

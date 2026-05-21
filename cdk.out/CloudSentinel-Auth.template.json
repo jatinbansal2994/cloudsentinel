@@ -1,0 +1,185 @@
+{
+ "Resources": {
+  "TenantUserPool3CC661A0": {
+   "Type": "AWS::Cognito::UserPool",
+   "Properties": {
+    "AccountRecoverySetting": {
+     "RecoveryMechanisms": [
+      {
+       "Name": "verified_phone_number",
+       "Priority": 1
+      },
+      {
+       "Name": "verified_email",
+       "Priority": 2
+      }
+     ]
+    },
+    "AdminCreateUserConfig": {
+     "AllowAdminCreateUserOnly": false
+    },
+    "AutoVerifiedAttributes": [
+     "email"
+    ],
+    "EmailVerificationMessage": "The verification code to your new account is {####}",
+    "EmailVerificationSubject": "Verify your new account",
+    "Policies": {
+     "PasswordPolicy": {
+      "MinimumLength": 8,
+      "RequireNumbers": true,
+      "RequireSymbols": false,
+      "RequireUppercase": true
+     }
+    },
+    "Schema": [
+     {
+      "AttributeDataType": "String",
+      "Mutable": false,
+      "Name": "tenantId"
+     },
+     {
+      "AttributeDataType": "String",
+      "Mutable": true,
+      "Name": "plan"
+     }
+    ],
+    "SmsVerificationMessage": "The verification code to your new account is {####}",
+    "UserPoolName": "cloudsentinel-tenants",
+    "UserPoolTags": {
+     "ManagedBy": "CDK-Python",
+     "Project": "CloudSentinel"
+    },
+    "UsernameAttributes": [
+     "email"
+    ],
+    "VerificationMessageTemplate": {
+     "DefaultEmailOption": "CONFIRM_WITH_CODE",
+     "EmailMessage": "The verification code to your new account is {####}",
+     "EmailSubject": "Verify your new account",
+     "SmsMessage": "The verification code to your new account is {####}"
+    }
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "CloudSentinel-Auth/TenantUserPool/Resource"
+   }
+  },
+  "TenantUserPoolWebClient0042B1AE": {
+   "Type": "AWS::Cognito::UserPoolClient",
+   "Properties": {
+    "AllowedOAuthFlows": [
+     "implicit",
+     "code"
+    ],
+    "AllowedOAuthFlowsUserPoolClient": true,
+    "AllowedOAuthScopes": [
+     "profile",
+     "phone",
+     "email",
+     "openid",
+     "aws.cognito.signin.user.admin"
+    ],
+    "CallbackURLs": [
+     "https://example.com"
+    ],
+    "ExplicitAuthFlows": [
+     "ALLOW_USER_PASSWORD_AUTH",
+     "ALLOW_USER_SRP_AUTH",
+     "ALLOW_REFRESH_TOKEN_AUTH"
+    ],
+    "SupportedIdentityProviders": [
+     "COGNITO"
+    ],
+    "UserPoolId": {
+     "Ref": "TenantUserPool3CC661A0"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "CloudSentinel-Auth/TenantUserPool/WebClient/Resource"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/zPSMzI10TNQTCwv1k1OydbNyUzSqw4uSUzO1kksL45Pzk/PyyzJ16sOLU4tCsjPz9FxTsuDs2EM55zM1LwSZCmISC1IyL+0pKC0pFYnoLIkIz9P31jP0EjPWDGrODNTt6g0ryQzN1UvCEIDABHLa/SMAAAA"
+   },
+   "Metadata": {
+    "aws:cdk:path": "CloudSentinel-Auth/CDKMetadata/Default"
+   }
+  }
+ },
+ "Outputs": {
+  "UserPoolId": {
+   "Value": {
+    "Ref": "TenantUserPool3CC661A0"
+   }
+  },
+  "UserPoolClientId": {
+   "Value": {
+    "Ref": "TenantUserPoolWebClient0042B1AE"
+   }
+  },
+  "ExportsOutputFnGetAttTenantUserPool3CC661A0Arn9588048A": {
+   "Value": {
+    "Fn::GetAtt": [
+     "TenantUserPool3CC661A0",
+     "Arn"
+    ]
+   },
+   "Export": {
+    "Name": "CloudSentinel-Auth:ExportsOutputFnGetAttTenantUserPool3CC661A0Arn9588048A"
+   }
+  },
+  "ExportsOutputRefTenantUserPool3CC661A0AB715003": {
+   "Value": {
+    "Ref": "TenantUserPool3CC661A0"
+   },
+   "Export": {
+    "Name": "CloudSentinel-Auth:ExportsOutputRefTenantUserPool3CC661A0AB715003"
+   }
+  },
+  "ExportsOutputRefTenantUserPoolWebClient0042B1AEF84EB5E2": {
+   "Value": {
+    "Ref": "TenantUserPoolWebClient0042B1AE"
+   },
+   "Export": {
+    "Name": "CloudSentinel-Auth:ExportsOutputRefTenantUserPoolWebClient0042B1AEF84EB5E2"
+   }
+  }
+ },
+ "Parameters": {
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,508 @@
+{
+  "/CloudSentinel-Network": [
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "Kernel._Kernel_create (/tmp/tmpl_lsb6pm/lib/program.js:1:61273)",
+        "Kernel.create (/tmp/tmpl_lsb6pm/lib/program.js:1:52004)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    },
+    {
+      "type": "aws:cdk:stack-tags",
+      "data": [
+        {
+          "key": "ManagedBy",
+          "value": "CDK-Python"
+        },
+        {
+          "key": "Project",
+          "value": "CloudSentinel"
+        }
+      ]
+    }
+  ],
+  "/CloudSentinel-Network/VpcId": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VpcId"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "Kernel._Kernel_create (/tmp/tmpl_lsb6pm/lib/program.js:1:61273)",
+        "Kernel.create (/tmp/tmpl_lsb6pm/lib/program.js:1:52004)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Network/BootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BootstrapVersion"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "/tmp/tmpl_lsb6pm/lib/program.js:1:543 (/tmp/tmpl_lsb6pm/lib/program.js:1:5434)",
+        "Kernel._Kernel_ensureSync (/tmp/tmpl_lsb6pm/lib/program.js:1:69992)",
+        "Kernel.invoke (/tmp/tmpl_lsb6pm/lib/program.js:1:54294)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Network/CheckBootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CheckBootstrapVersion"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "/tmp/tmpl_lsb6pm/lib/program.js:1:543 (/tmp/tmpl_lsb6pm/lib/program.js:1:5434)",
+        "Kernel._Kernel_ensureSync (/tmp/tmpl_lsb6pm/lib/program.js:1:69992)",
+        "Kernel.invoke (/tmp/tmpl_lsb6pm/lib/program.js:1:54294)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Network/CloudSentinelVpc/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CloudSentinelVpcB6080008"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Vpc2 in aws-cdk-lib...",
+        "Kernel._Kernel_create (/tmp/tmpl_lsb6pm/lib/program.js:1:61273)",
+        "Kernel.create (/tmp/tmpl_lsb6pm/lib/program.js:1:52004)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Network/CloudSentinelVpc/IGW": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CloudSentinelVpcIGW997EA9B6"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Vpc2 in aws-cdk-lib...",
+        "Kernel._Kernel_create (/tmp/tmpl_lsb6pm/lib/program.js:1:61273)",
+        "Kernel.create (/tmp/tmpl_lsb6pm/lib/program.js:1:52004)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Network/CloudSentinelVpc/VPCGW": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CloudSentinelVpcVPCGW620BC6C2"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Vpc2 in aws-cdk-lib...",
+        "Kernel._Kernel_create (/tmp/tmpl_lsb6pm/lib/program.js:1:61273)",
+        "Kernel.create (/tmp/tmpl_lsb6pm/lib/program.js:1:52004)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Network/CDKMetadata/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadata"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "/tmp/tmpl_lsb6pm/lib/program.js:1:543 (/tmp/tmpl_lsb6pm/lib/program.js:1:5434)",
+        "Kernel._Kernel_ensureSync (/tmp/tmpl_lsb6pm/lib/program.js:1:69992)",
+        "Kernel.invoke (/tmp/tmpl_lsb6pm/lib/program.js:1:54294)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Network/CloudSentinelVpc/PublicSubnet1/Subnet": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CloudSentinelVpcPublicSubnet1SubnetBBCB577F"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../tmp/jsii-kernel-OsAXXm/node_modules/aws-cdk-lib/aws-ec2/lib/vpc.js:1:257 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "Kernel._Kernel_create (/tmp/tmpl_lsb6pm/lib/program.js:1:61273)",
+        "Kernel.create (/tmp/tmpl_lsb6pm/lib/program.js:1:52004)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Network/CloudSentinelVpc/PublicSubnet1/RouteTable": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CloudSentinelVpcPublicSubnet1RouteTableA1379182"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../tmp/jsii-kernel-OsAXXm/node_modules/aws-cdk-lib/aws-ec2/lib/vpc.js:1:257 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "Kernel._Kernel_create (/tmp/tmpl_lsb6pm/lib/program.js:1:61273)",
+        "Kernel.create (/tmp/tmpl_lsb6pm/lib/program.js:1:52004)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Network/CloudSentinelVpc/PublicSubnet1/RouteTableAssociation": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CloudSentinelVpcPublicSubnet1RouteTableAssociation77798386"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../tmp/jsii-kernel-OsAXXm/node_modules/aws-cdk-lib/aws-ec2/lib/vpc.js:1:257 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "Kernel._Kernel_create (/tmp/tmpl_lsb6pm/lib/program.js:1:61273)",
+        "Kernel.create (/tmp/tmpl_lsb6pm/lib/program.js:1:52004)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Network/CloudSentinelVpc/PublicSubnet1/DefaultRoute": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CloudSentinelVpcPublicSubnet1DefaultRouteCC798AC2"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../tmp/jsii-kernel-OsAXXm/node_modules/aws-cdk-lib/aws-ec2/lib/vpc.js:1:197 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "Kernel._Kernel_create (/tmp/tmpl_lsb6pm/lib/program.js:1:61273)",
+        "Kernel.create (/tmp/tmpl_lsb6pm/lib/program.js:1:52004)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Network/CloudSentinelVpc/PublicSubnet1/EIP": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CloudSentinelVpcPublicSubnet1EIP3FB3F356"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Vpc2 in aws-cdk-lib...",
+        "Kernel._Kernel_create (/tmp/tmpl_lsb6pm/lib/program.js:1:61273)",
+        "Kernel.create (/tmp/tmpl_lsb6pm/lib/program.js:1:52004)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Network/CloudSentinelVpc/PublicSubnet1/NATGateway": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CloudSentinelVpcPublicSubnet1NATGateway1CFCBC48"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Vpc2 in aws-cdk-lib...",
+        "Kernel._Kernel_create (/tmp/tmpl_lsb6pm/lib/program.js:1:61273)",
+        "Kernel.create (/tmp/tmpl_lsb6pm/lib/program.js:1:52004)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Network/CloudSentinelVpc/PublicSubnet2/Subnet": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CloudSentinelVpcPublicSubnet2Subnet0F4A1BA0"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../tmp/jsii-kernel-OsAXXm/node_modules/aws-cdk-lib/aws-ec2/lib/vpc.js:1:257 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "Kernel._Kernel_create (/tmp/tmpl_lsb6pm/lib/program.js:1:61273)",
+        "Kernel.create (/tmp/tmpl_lsb6pm/lib/program.js:1:52004)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Network/CloudSentinelVpc/PublicSubnet2/RouteTable": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CloudSentinelVpcPublicSubnet2RouteTableE34659A3"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../tmp/jsii-kernel-OsAXXm/node_modules/aws-cdk-lib/aws-ec2/lib/vpc.js:1:257 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "Kernel._Kernel_create (/tmp/tmpl_lsb6pm/lib/program.js:1:61273)",
+        "Kernel.create (/tmp/tmpl_lsb6pm/lib/program.js:1:52004)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Network/CloudSentinelVpc/PublicSubnet2/RouteTableAssociation": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CloudSentinelVpcPublicSubnet2RouteTableAssociationBB69B182"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../tmp/jsii-kernel-OsAXXm/node_modules/aws-cdk-lib/aws-ec2/lib/vpc.js:1:257 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "Kernel._Kernel_create (/tmp/tmpl_lsb6pm/lib/program.js:1:61273)",
+        "Kernel.create (/tmp/tmpl_lsb6pm/lib/program.js:1:52004)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Network/CloudSentinelVpc/PublicSubnet2/DefaultRoute": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CloudSentinelVpcPublicSubnet2DefaultRoute2E5F8B5C"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../tmp/jsii-kernel-OsAXXm/node_modules/aws-cdk-lib/aws-ec2/lib/vpc.js:1:197 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "Kernel._Kernel_create (/tmp/tmpl_lsb6pm/lib/program.js:1:61273)",
+        "Kernel.create (/tmp/tmpl_lsb6pm/lib/program.js:1:52004)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Network/CloudSentinelVpc/PrivateSubnet1/Subnet": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CloudSentinelVpcPrivateSubnet1SubnetFDE52B93"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../tmp/jsii-kernel-OsAXXm/node_modules/aws-cdk-lib/aws-ec2/lib/vpc.js:1:260 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "Kernel._Kernel_create (/tmp/tmpl_lsb6pm/lib/program.js:1:61273)",
+        "Kernel.create (/tmp/tmpl_lsb6pm/lib/program.js:1:52004)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Network/CloudSentinelVpc/PrivateSubnet1/RouteTable": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CloudSentinelVpcPrivateSubnet1RouteTableD8030AF0"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../tmp/jsii-kernel-OsAXXm/node_modules/aws-cdk-lib/aws-ec2/lib/vpc.js:1:260 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "Kernel._Kernel_create (/tmp/tmpl_lsb6pm/lib/program.js:1:61273)",
+        "Kernel.create (/tmp/tmpl_lsb6pm/lib/program.js:1:52004)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Network/CloudSentinelVpc/PrivateSubnet1/RouteTableAssociation": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CloudSentinelVpcPrivateSubnet1RouteTableAssociationF2ED7AA1"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../tmp/jsii-kernel-OsAXXm/node_modules/aws-cdk-lib/aws-ec2/lib/vpc.js:1:260 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "Kernel._Kernel_create (/tmp/tmpl_lsb6pm/lib/program.js:1:61273)",
+        "Kernel.create (/tmp/tmpl_lsb6pm/lib/program.js:1:52004)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Network/CloudSentinelVpc/PrivateSubnet1/DefaultRoute": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CloudSentinelVpcPrivateSubnet1DefaultRoute50D57439"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Vpc2 in aws-cdk-lib...",
+        "Kernel._Kernel_create (/tmp/tmpl_lsb6pm/lib/program.js:1:61273)",
+        "Kernel.create (/tmp/tmpl_lsb6pm/lib/program.js:1:52004)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Network/CloudSentinelVpc/PrivateSubnet2/Subnet": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CloudSentinelVpcPrivateSubnet2Subnet4E4D73E7"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../tmp/jsii-kernel-OsAXXm/node_modules/aws-cdk-lib/aws-ec2/lib/vpc.js:1:260 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "Kernel._Kernel_create (/tmp/tmpl_lsb6pm/lib/program.js:1:61273)",
+        "Kernel.create (/tmp/tmpl_lsb6pm/lib/program.js:1:52004)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Network/CloudSentinelVpc/PrivateSubnet2/RouteTable": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CloudSentinelVpcPrivateSubnet2RouteTableC9A41279"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../tmp/jsii-kernel-OsAXXm/node_modules/aws-cdk-lib/aws-ec2/lib/vpc.js:1:260 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "Kernel._Kernel_create (/tmp/tmpl_lsb6pm/lib/program.js:1:61273)",
+        "Kernel.create (/tmp/tmpl_lsb6pm/lib/program.js:1:52004)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Network/CloudSentinelVpc/PrivateSubnet2/RouteTableAssociation": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CloudSentinelVpcPrivateSubnet2RouteTableAssociation42B43701"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../tmp/jsii-kernel-OsAXXm/node_modules/aws-cdk-lib/aws-ec2/lib/vpc.js:1:260 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "Kernel._Kernel_create (/tmp/tmpl_lsb6pm/lib/program.js:1:61273)",
+        "Kernel.create (/tmp/tmpl_lsb6pm/lib/program.js:1:52004)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/CloudSentinel-Network/CloudSentinelVpc/PrivateSubnet2/DefaultRoute": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CloudSentinelVpcPrivateSubnet2DefaultRouteA80A3372"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Vpc2 in aws-cdk-lib...",
+        "Kernel._Kernel_create (/tmp/tmpl_lsb6pm/lib/program.js:1:61273)",
+        "Kernel.create (/tmp/tmpl_lsb6pm/lib/program.js:1:52004)",
+        "KernelHost.processRequest (/tmp/tmpl_lsb6pm/lib/program.js:1:212888)",
+        "KernelHost.run (/tmp/tmpl_lsb6pm/lib/program.js:1:211943)",
+        "Immediate._onImmediate (/tmp/tmpl_lsb6pm/lib/program.js:1:211987)",
+        "...node internals..."
+      ]
+    }
+  ]
+}

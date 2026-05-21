@@ -1,0 +1,18 @@
+# docker/Dockerfile.lambda
+# ─────────────────────────
+# Packages the stream-processor as a Lambda container image.
+# Pushed to ECR, then Lambda pulls it on deploy.
+# Advantage over zip: no 250MB layer size limit.
+
+FROM public.ecr.aws/lambda/python:3.11
+
+WORKDIR ${LAMBDA_TASK_ROOT}
+
+# Install dependencies first (layer cached unless requirements.txt changes)
+COPY lambda/stream-processor/requirements.txt .
+RUN pip install -r requirements.txt --no-cache-dir
+
+# Copy function code
+COPY lambda/stream-processor/index.py .
+
+CMD ["index.handler"]
