@@ -2,7 +2,7 @@
 stacks/compute_stack.py
 Lambda functions + API Gateway.
 
-stream_processor: triggered by Kinesis → calls SageMaker → writes anomaly alerts
+stream_processor: triggered by Kinesis → calls SageMaker → writes anomaly alerts → publishes SNS
 api_handler:      handles REST requests from the React dashboard
 """
 import aws_cdk as cdk
@@ -15,6 +15,7 @@ from aws_cdk import (
     aws_s3 as s3,
     aws_cognito as cognito,
     aws_iam as iam,
+    aws_sns as sns,
 )
 from constructs import Construct
 
@@ -31,21 +32,23 @@ class ComputeStack(cdk.Stack):
         data_bucket: s3.Bucket,
         user_pool: cognito.UserPool,
         sagemaker_endpoint_name: str,
+        alert_topic: sns.Topic,
         **kwargs,
     ) -> None:
         super().__init__(scope, construct_id, **kwargs)
 
         # Shared environment variables injected into every Lambda
         shared_env = {
-            "TENANT_TABLE":       tenant_table.table_name,
-            "ALERT_TABLE":        alert_table.table_name,
-            "DATA_BUCKET":        data_bucket.bucket_name,
-            "SAGEMAKER_ENDPOINT": sagemaker_endpoint_name,
+            "TENANT_TABLE":        tenant_table.table_name,
+            "ALERT_TABLE":         alert_table.table_name,
+            "DATA_BUCKET":         data_bucket.bucket_name,
+            "SAGEMAKER_ENDPOINT":  sagemaker_endpoint_name,
             "KINESIS_STREAM_NAME": stream.stream_name,
+            "ALERT_TOPIC_ARN":     alert_topic.topic_arn,
         }
 
         # ── Stream Processor Lambda ────────────────────────────────────────
-        # Reads from Kinesis → scores via SageMaker → writes alerts to DynamoDB
+        # Reads from Kinesis → scores via SageMaker → writes alerts → publishes SNS
         stream_processor = _lambda.Function(
             self, "StreamProcessor",
             function_name="cloudsentinel-stream-processor",
@@ -72,6 +75,7 @@ class ComputeStack(cdk.Stack):
         alert_table.grant_write_data(stream_processor)
         data_bucket.grant_write(stream_processor)
         stream.grant_read(stream_processor)
+        alert_topic.grant_publish(stream_processor)
 
         # Allow Lambda to call the SageMaker inference endpoint
         stream_processor.add_to_role_policy(
@@ -118,20 +122,25 @@ class ComputeStack(cdk.Stack):
             cognito_user_pools=[user_pool],
         )
 
-        auth_opts = apigw.MethodOptions(
-            authorizer=authorizer,
-            authorization_type=apigw.AuthorizationType.COGNITO,
-        )
         integration = apigw.LambdaIntegration(api_handler)
 
-        # Routes
+        # Routes — all protected by Cognito
         self.api.root.add_resource("ingest").add_method("POST", integration,
             authorization_type=apigw.AuthorizationType.COGNITO,
             authorizer=authorizer,
         )
-        self.api.root.add_resource("alerts").add_method("GET",  integration)
+        self.api.root.add_resource("alerts").add_method("GET", integration,
+            authorization_type=apigw.AuthorizationType.COGNITO,
+            authorizer=authorizer,
+        )
         tenants = self.api.root.add_resource("tenants")
-        tenants.add_method("GET",  integration)
-        tenants.add_method("POST", integration)
+        tenants.add_method("GET",  integration,
+            authorization_type=apigw.AuthorizationType.COGNITO,
+            authorizer=authorizer,
+        )
+        tenants.add_method("POST", integration,
+            authorization_type=apigw.AuthorizationType.COGNITO,
+            authorizer=authorizer,
+        )
 
         cdk.CfnOutput(self, "ApiUrl", value=self.api.url)

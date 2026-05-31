@@ -4,4 +4,8 @@ node_modules/
 cdk.out/
 __pycache__/
 *.pyc
+*.swp
 .env
+cdk.context.json
+ml/training/model_artifacts/
+ml/training/model.tar.gz

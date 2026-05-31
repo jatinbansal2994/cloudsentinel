@@ -1,65 +1,107 @@
 """
-ml/inference/serve.py
-─────────────────────
-Flask server that SageMaker wraps as a real-time inference endpoint.
+CloudSentinel — SageMaker Inference Script (script mode)
+=========================================================
+Loaded by the SageMaker sklearn container via SAGEMAKER_PROGRAM=serve.py.
 
-SageMaker requires exactly two routes:
-  GET  /ping         → return 200 (health check, called every 30s)
-  POST /invocations  → accept JSON metric, return anomaly score
+The four functions below are the SageMaker script-mode contract:
+  model_fn   — load artefacts from /opt/ml/model/
+  input_fn   — deserialise the HTTP request body
+  predict_fn — run inference
+  output_fn  — serialise the response
 
-Input  (JSON): { "response_time_ms": 850, "error_rate": 0.4, ... }
-Output (JSON): { "score": 0.87, "threshold": 0.7, "is_anomaly": true }
+Input (application/json)
+------------------------
+Single record:
+    {"cpu_util": 85.3, "memory_util": 90.1, "latency_ms": 350.0,
+     "error_rate": 0.12, "request_count": 42.0}
+
+Batch:
+    [{"cpu_util": …}, {"cpu_util": …}]
+
+Output (application/json)
+-------------------------
+    {
+      "predictions": [1, -1, 1],   // 1 = normal, -1 = anomaly
+      "scores":      [-0.05, -0.34, -0.02]  // more negative → more anomalous
+    }
 """
+
 import json
+import logging
 import os
-import pickle
+
+import joblib
 import numpy as np
-from flask import Flask, request, jsonify
 
-app = Flask(__name__)
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
 
-# Load model once at container startup (not per-request)
-MODEL_DIR = os.environ.get('MODEL_DIR', 'model/')
-
-with open(f'{MODEL_DIR}/model.pkl',    'rb') as f: model  = pickle.load(f)
-with open(f'{MODEL_DIR}/scaler.pkl',   'rb') as f: scaler = pickle.load(f)
-with open(f'{MODEL_DIR}/features.json') as f:
-    FEATURES  = json.load(f)['features']
-
-THRESHOLD = 0.7
+FEATURES = ["cpu_util", "memory_util", "latency_ms", "error_rate", "request_count"]
 
 
-@app.get('/ping')
-def ping():
-    """SageMaker health check. Must return 200."""
-    return 'OK', 200
+# ── SageMaker contract ─────────────────────────────────────────────────────────
+
+def model_fn(model_dir: str) -> dict:
+    """Load the IsolationForest and StandardScaler from the model directory."""
+    logger.info(f"Loading model artefacts from {model_dir}")
+    model  = joblib.load(os.path.join(model_dir, "model.pkl"))
+    scaler = joblib.load(os.path.join(model_dir, "scaler.pkl"))
+    logger.info("Model artefacts loaded successfully")
+    return {"model": model, "scaler": scaler}
 
 
-@app.post('/invocations')
-def predict():
+def input_fn(request_body: str | bytes, content_type: str = "application/json") -> np.ndarray:
     """
-    Score a single telemetry event for anomalies.
-    Returns a score between 0 (normal) and 1 (definite anomaly).
+    Parse the incoming request body into a 2-D numpy array.
+
+    Accepts both a single JSON object and a JSON array of objects.
+    Missing features default to 0.0.
     """
-    payload = request.get_json(force=True)
+    if content_type != "application/json":
+        raise ValueError(f"Unsupported content type: {content_type!r}. Use application/json.")
 
-    # Build feature vector in the exact order the model was trained on
-    row = [float(payload.get(f, 0.0)) for f in FEATURES]
-    X   = scaler.transform([row])
+    if isinstance(request_body, bytes):
+        request_body = request_body.decode("utf-8")
 
-    # Isolation Forest decision_function: negative = more anomalous
-    # We map it to 0-1 where 1 = most anomalous
-    raw_score = model.decision_function(X)[0]
-    score     = float(np.clip(1.0 - (raw_score + 0.5), 0.0, 1.0))
+    data = json.loads(request_body)
 
-    return jsonify({
-        'score':      round(score, 4),
-        'threshold':  THRESHOLD,
-        'is_anomaly': score >= THRESHOLD,
-        'features':   dict(zip(FEATURES, row)),
-    })
+    # Normalise single-record input to a list
+    if isinstance(data, dict):
+        data = [data]
+
+    rows = [
+        [float(record.get(feature, 0.0)) for feature in FEATURES]
+        for record in data
+    ]
+    return np.array(rows, dtype=np.float64)
 
 
-if __name__ == '__main__':
-    # Local testing: python serve.py
-    app.run(host='0.0.0.0', port=8080, debug=True)
+def predict_fn(input_data: np.ndarray, model_artifacts: dict) -> dict:
+    """
+    Scale features and run Isolation Forest.
+
+    Returns a dict with:
+      predictions — list of int  (1 = normal, -1 = anomaly)
+      scores      — list of float (lower = more anomalous; threshold ≈ –0.1)
+    """
+    model  = model_artifacts["model"]
+    scaler = model_artifacts["scaler"]
+
+    X_scaled    = scaler.transform(input_data)
+    predictions = model.predict(X_scaled)       # ndarray of 1 / -1
+    scores      = model.score_samples(X_scaled)  # raw anomaly scores
+
+    n_anomalies = int((predictions == -1).sum())
+    logger.info(f"Scored {len(predictions)} records — {n_anomalies} anomaly/anomalies flagged")
+
+    return {
+        "predictions": predictions.tolist(),
+        "scores":      [round(s, 6) for s in scores.tolist()],
+    }
+
+
+def output_fn(prediction: dict, accept: str = "application/json") -> tuple[str, str]:
+    """Serialise the prediction dict to JSON."""
+    if accept != "application/json":
+        raise ValueError(f"Unsupported accept type: {accept!r}. Use application/json.")
+    return json.dumps(prediction), "application/json"

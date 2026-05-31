@@ -41,7 +41,7 @@ class FrontendStack(cdk.Stack):
         distribution = cloudfront.Distribution(
             self, "SiteDist",
             default_behavior=cloudfront.BehaviorOptions(
-                origin=origins.S3Origin(site_bucket),
+                origin=origins.S3BucketOrigin.with_origin_access_control(site_bucket),
                 viewer_protocol_policy=cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
                 cache_policy=cloudfront.CachePolicy.CACHING_OPTIMIZED,
             ),
