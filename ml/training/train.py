@@ -149,11 +149,33 @@ def package_model(artifact_dir: str, output_path: str = TAR_OUTPUT) -> str:
 
     with tarfile.open(output_path, "w:gz") as tar:
         for fname in os.listdir(artifact_dir):
-            tar.add(os.path.join(artifact_dir, fname), arcname=fname)
+            fpath = os.path.join(artifact_dir, fname)
+            # serve.py must live inside code/ so the sklearn container finds it
+            # via SAGEMAKER_SUBMIT_DIRECTORY=/opt/ml/model/code
+            arcname = os.path.join("code", fname) if fname == "serve.py" else fname
+            tar.add(fpath, arcname=arcname)
 
     size_kb = os.path.getsize(output_path) / 1024
     print(f"✓  Packaged → {output_path}  ({size_kb:.1f} KB)")
     return output_path
+
+
+# ── Bucket auto-detection ──────────────────────────────────────────────────────
+
+def detect_bucket() -> str:
+    """Look up the data bucket name from the CloudSentinel-Storage stack output."""
+    cf = boto3.client("cloudformation")
+    try:
+        outputs = cf.describe_stacks(StackName="CloudSentinel-Storage")["Stacks"][0]["Outputs"]
+        for o in outputs:
+            if o["OutputKey"] == "DataBucketName":
+                return o["OutputValue"]
+        raise RuntimeError("DataBucketName output not found in CloudSentinel-Storage stack.")
+    except cf.exceptions.ClientError:
+        raise RuntimeError(
+            "CloudSentinel-Storage stack not found. Deploy it first:\n"
+            "  cdk deploy CloudSentinel-Storage"
+        )
 
 
 # ── Upload ─────────────────────────────────────────────────────────────────────
@@ -173,8 +195,8 @@ def upload_to_s3(local_path: str, bucket: str, prefix: str = S3_KEY_PREFIX) -> s
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Train CloudSentinel anomaly model")
     parser.add_argument(
-        "--bucket", required=True,
-        help="S3 bucket name output by storage_stack (CloudSentinelDataBucket)"
+        "--bucket", default=None,
+        help="S3 bucket name (optional — auto-detected from CloudSentinel-Storage stack if omitted)"
     )
     parser.add_argument(
         "--no-upload", action="store_true",
@@ -186,13 +208,19 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
 
+    bucket = args.bucket
+    if bucket is None and not args.no_upload:
+        print("⟳  No --bucket provided — detecting from CloudSentinel-Storage stack …")
+        bucket = detect_bucket()
+        print(f"   Found bucket: {bucket}")
+
     artifact_dir = train(args.artifact_dir)
     tar_path     = package_model(artifact_dir)
 
     if args.no_upload:
         print(f"\n📦  Dry-run complete. Artifacts at: {tar_path}")
     else:
-        s3_uri = upload_to_s3(tar_path, args.bucket)
+        s3_uri = upload_to_s3(tar_path, bucket)
         print(f"""
 ╔══════════════════════════════════════════════════════╗
 ║  Model uploaded successfully                         ║

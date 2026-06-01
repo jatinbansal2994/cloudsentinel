@@ -72,7 +72,7 @@ class MlStack(Stack):
             self,
             "SageMakerExecutionRole",
             assumed_by=iam.ServicePrincipal("sagemaker.amazonaws.com"),
-            description="CloudSentinel — SageMaker execution role",
+            description="CloudSentinel - SageMaker execution role",
             managed_policies=[
                 iam.ManagedPolicy.from_aws_managed_policy_name("AmazonSageMakerFullAccess"),
             ],
@@ -103,6 +103,10 @@ class MlStack(Stack):
         # ── SageMaker Model ────────────────────────────────────────────────────
         # model.tar.gz contains: model.pkl, scaler.pkl, metadata.json, serve.py
         # SAGEMAKER_PROGRAM tells the container which script handles inference.
+        #
+        # Explicit dependency on the role's inline S3 policy — without this,
+        # CloudFormation creates the model in parallel with the policy attachment,
+        # causing SageMaker to fail with an S3 access error on first deploy.
         self.cfn_model = sagemaker.CfnModel(
             self,
             "IsolationForestModel",
@@ -113,6 +117,7 @@ class MlStack(Stack):
                 model_data_url=model_s3_uri,
                 environment={
                     "SAGEMAKER_PROGRAM":              "serve.py",
+                    "SAGEMAKER_SUBMIT_DIRECTORY":     "/opt/ml/model/code",
                     "SAGEMAKER_CONTAINER_LOG_LEVEL":  "20",  # INFO
                     "SAGEMAKER_REGION":               region,
                 },
@@ -120,7 +125,7 @@ class MlStack(Stack):
         )
 
         # ── Endpoint Configuration ─────────────────────────────────────────────
-        # ml.t3.medium: 2 vCPU, 4 GB RAM — adequate for Isolation Forest
+        # ml.t2.medium: 2 vCPU, 4 GB RAM — adequate for Isolation Forest
         # Scale up to ml.m5.large if p99 latency > 100 ms under load
         self.cfn_endpoint_config = sagemaker.CfnEndpointConfig(
             self,
@@ -131,11 +136,15 @@ class MlStack(Stack):
                     model_name=self.cfn_model.model_name,  # type: ignore[arg-type]
                     variant_name="AllTraffic",
                     initial_instance_count=1,
-                    instance_type="ml.t3.medium",
+                    instance_type="ml.t2.medium",
                     initial_variant_weight=1.0,
                 )
             ],
         )
+        # Wait for the inline S3 policy to be fully attached before model creation
+        role_default_policy = self.sagemaker_role.node.find_child("DefaultPolicy")
+        self.cfn_model.node.add_dependency(role_default_policy)
+
         self.cfn_endpoint_config.add_dependency(self.cfn_model)
 
         # ── Endpoint ───────────────────────────────────────────────────────────
