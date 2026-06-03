@@ -26,6 +26,7 @@ class StreamingStack(cdk.Stack):
             shard_count=2,                          # 1 shard ≈ 5 active tenants
             retention_period=cdk.Duration.hours(24),# replay buffer
             encryption=kinesis.StreamEncryption.MANAGED,
+            removal_policy=cdk.RemovalPolicy.DESTROY,
         )
 
         cdk.CfnOutput(self, "StreamName", value=self.telemetry_stream.stream_name)

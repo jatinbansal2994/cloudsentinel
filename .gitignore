@@ -1,4 +1,5 @@
 .venv
+.venv-training/
 node_modules/
 .venv/
 cdk.out/

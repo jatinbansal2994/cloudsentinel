@@ -49,7 +49,15 @@ cloudsentinel/
       [x] model.tar.gz trained and uploaded to S3 (trained with sklearn==1.2.1 via Python 3.11 venv)
       [x] All 7 stacks deployed: Network, Auth, Storage, Streaming, ML, Alerting, Compute
       [x] SageMaker endpoint InService
-[ ] Phase 4: React frontend
+[x] Phase 4: React frontend
+      [x] Vite + React scaffolded in frontend/
+      [x] Tailwind CSS configured
+      [x] Cognito auth (login/logout, JWT via amazon-cognito-identity-js)
+      [x] Alerts page (GET /alerts — table with severity badges)
+      [x] Tenants page (GET /tenants + POST /tenants form)
+      [x] Ingest page (POST /ingest — editable JSON payload)
+      [x] Production build clean (vite build → dist/)
+      [ ] Deploy: fill frontend/.env, run cdk deploy CloudSentinel-Frontend, then sync dist/ to S3
 [ ] Phase 5: Docker + CI/CD
 [ ] Phase 6: Testing + polish
 
