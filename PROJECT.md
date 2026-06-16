@@ -6,38 +6,45 @@ Tenants send telemetry → Kinesis streams it → Lambda processes it →
 SageMaker scores anomalies → DynamoDB stores alerts → React dashboard shows them.
 
 ## Tech Stack
-- IaC:       AWS CDK (Python 3.11)
+- IaC:       AWS CDK (Python)
 - Streaming: Kinesis Data Streams (2 shards, per-tenant partitioning)
-- Compute:   Lambda Python 3.11 (stream-processor + api-handler)
-- ML:        SageMaker endpoint running Isolation Forest (sklearn 1.2-1 container)
-- DB:        DynamoDB (on-demand), S3 + Athena, ElastiCache
-- Auth:      Cognito (multi-tenant, tenantId in JWT)
-- Alerts:    SNS (stream-processor publishes on every anomaly) + EventBridge
-- Frontend:  React → S3 + CloudFront (OAC)
-- CI/CD:     GitHub Actions
+- Compute:   Lambda Python (stream-processor + api-handler)
+- ML:        SageMaker endpoint running Isolation Forest (sklearn 1.2.1 container)
+- DB:        DynamoDB (on-demand), S3 data lake
+- Auth:      Cognito (multi-tenant, tenantId in JWT, admins group)
+- Alerts:    SNS (stream-processor publishes on every anomaly, per-tenant filter)
+- Frontend:  React (Vite + Tailwind) → S3 + CloudFront (OAC)
 
 ## Folder Structure
 cloudsentinel/
   app.py                    CDK entrypoint — run: cdk deploy --all
   requirements.txt          CDK Python deps
   cdk.json                  CDK config (region: us-east-1)
-  stacks/                   One file per AWS concern
+  stacks/
     network_stack.py        VPC (2 AZs, 1 NAT gateway)
-    auth_stack.py           Cognito (tenantId custom JWT attribute)
+    auth_stack.py           Cognito (tenantId custom JWT attribute, admins group)
     storage_stack.py        DynamoDB (tenants + alerts tables) + S3 data lake
-    streaming_stack.py      Kinesis (2 shards, 24h retention)
+    streaming_stack.py      Kinesis (2 shards, 24h retention, RemovalPolicy.DESTROY)
     compute_stack.py        Lambda + API Gateway (all routes Cognito-protected)
     ml_stack.py             SageMaker CfnModel + CfnEndpointConfig + CfnEndpoint
     alerting_stack.py       SNS topic + EventBridge custom bus
     frontend_stack.py       CloudFront (OAC) + S3
   lambda/
     stream-processor/       Kinesis → SageMaker → DynamoDB → SNS
-    api-handler/            REST API for React (GET /alerts, GET|POST /tenants, POST /ingest)
+    api-handler/            REST API (tenant routes + admin routes)
   ml/
     training/train.py       Train Isolation Forest, package model.tar.gz, upload to S3
-    inference/serve.py      SageMaker script-mode inference (model_fn/input_fn/predict_fn/output_fn)
-  docker/
-    docker-compose.yml      Local dev stack (LocalStack + Redis + inference container)
+    inference/serve.py      SageMaker script-mode inference (decision_function scoring)
+  frontend/
+    src/pages/Alerts.jsx    Anomaly alert table (severity, score, timestamp)
+    src/pages/Tenants.jsx   My Account (display name + plan)
+    src/pages/Ingest.jsx    Send test telemetry from browser
+    src/pages/Admin.jsx     Admin: manage all tenants, view cross-tenant alerts
+  scripts/
+    get_token.py            Fetch Cognito JWT for API / telemetry script
+    send_telemetry.py       Stream real/simulated/anomaly metrics to pipeline
+  docs/
+    sending-telemetry.md    Guide for friends sending their PC metrics
 
 ## Current Status
 [x] Phase 0: Python CDK project structure
@@ -46,65 +53,76 @@ cloudsentinel/
 [x] Phase 3: Train model + deploy SageMaker endpoint
       [x] ml_stack CDK code complete (CfnModel + CfnEndpoint)
       [x] train.py + serve.py complete
-      [x] model.tar.gz trained and uploaded to S3 (trained with sklearn==1.2.1 via Python 3.11 venv)
-      [x] All 7 stacks deployed: Network, Auth, Storage, Streaming, ML, Alerting, Compute
-      [x] SageMaker endpoint InService
+      [x] model.tar.gz trained and uploaded to S3 (sklearn==1.2.1 via Python 3.11 venv)
+      [x] All 8 stacks deployed and InService
 [x] Phase 4: React frontend
-      [x] Vite + React scaffolded in frontend/
-      [x] Tailwind CSS configured
+      [x] Vite + React + Tailwind CSS
       [x] Cognito auth (login/logout, JWT via amazon-cognito-identity-js)
-      [x] Alerts page (GET /alerts — table with severity badges)
-      [x] Tenants page (GET /tenants + POST /tenants form)
-      [x] Ingest page (POST /ingest — editable JSON payload)
-      [x] Production build clean (vite build → dist/)
-      [ ] Deploy: fill frontend/.env, run cdk deploy CloudSentinel-Frontend, then sync dist/ to S3
-[ ] Phase 5: Docker + CI/CD
-[ ] Phase 6: Testing + polish
+      [x] Alerts page — severity badges, score, timestamp (field: createdAt)
+      [x] Account page — display name + plan (replaces misleading "Add Tenant" form)
+      [x] Ingest page — editable JSON payload with correct feature names
+      [x] Deployed to S3 + CloudFront
+[x] Phase 4.5: Bug fixes post-deploy
+      [x] api.js: unwrap { alerts: [] } and { tenant: {} } response envelopes
+      [x] serve.py: score_samples → decision_function (scores were all -0.6, everything critical)
+      [x] Severity thresholds recalibrated for decision_function range (-0.04 / -0.01 / 0.03)
+      [x] SCORE_THRESHOLD updated from -0.10 to 0.03
+      [x] Alerts.jsx: a.timestamp → a.createdAt (timestamp was always showing —)
+      [x] Cognito user recreated with custom:tenantId=tenant-jatin (was 'unknown')
+      [x] SNS email subscription added with tenantId filter policy
+[x] Phase 5: Admin panel
+      [x] Cognito admins group created (cloudsentinel-admins)
+      [x] jatinbansal2994@gmail.com added to admins group
+      [x] Add USER_POOL_ID + ADMIN_GROUP env vars to api-handler Lambda (compute_stack.py)
+      [x] Grant api-handler Lambda Cognito AdminCreateUser + AdminSetUserPassword permissions
+      [x] Add admin API routes: GET /admin/tenants, POST /admin/tenants, GET /admin/alerts
+      [x] Build Admin.jsx: tenant table + create-tenant form + cross-tenant alerts tab
+      [x] Show Admin tab in sidebar only when JWT cognito:groups includes cloudsentinel-admins
+      [x] Deploy Compute stack + rebuild + sync frontend
+[x] Phase 6: Docker + CI/CD
+      [x] frontend/Dockerfile: multi-stage Node build → nginx serve
+      [x] frontend/nginx.conf: SPA routing + asset caching
+      [x] docker-compose.yml: `docker-compose up` serves app on localhost:3000
+      [x] .github/workflows/deploy.yml: push to main → CDK Compute deploy → S3 sync + CF invalidation
+[x] Phase 7: Testing + polish
+      [x] Fix missing 'critical' severity badge in Alerts.jsx (was showing gray)
+      [x] Fix 'normal' → 'low' severity key mismatch in Admin.jsx
+      [x] Fix stale SCORE_THRESHOLD comments in stream-processor + serve.py
+      [x] tests/test_stream_processor.py — 24 tests (severity, handler, invoke_sagemaker, publish_sns)
+      [x] tests/test_api_handler.py — 28 tests (all routes, is_admin, admin guards, tenant derivation)
+      [x] tests/test_serve.py — 15 tests (input_fn, predict_fn, output_fn, round-trip)
+      [x] pytest.ini + requirements-test.txt; run: source .venv/bin/activate && pytest
 
-## Deployed Stacks (us-east-1, account 187516374644)
+## Deployed Resources (us-east-1, account 187516374644)
 - CloudSentinel-Network    → DEPLOYED
-- CloudSentinel-Auth       → DEPLOYED
+- CloudSentinel-Auth       → DEPLOYED (pool: us-east-1_7edoTifa1)
 - CloudSentinel-Storage    → DEPLOYED (bucket: cloudsentinel-datalake-187516374644)
 - CloudSentinel-Streaming  → DEPLOYED (stream: cloudsentinel-telemetry)
-- CloudSentinel-ML         → DEPLOYED (endpoint InService)
-- CloudSentinel-Alerting   → DEPLOYED
-- CloudSentinel-Compute    → DEPLOYED
-- CloudSentinel-Frontend   → NOT DEPLOYED
+- CloudSentinel-ML         → DEPLOYED (endpoint: cloudsentinel-anomaly-detector, InService)
+- CloudSentinel-Alerting   → DEPLOYED (topic: cloudsentinel-alerts)
+- CloudSentinel-Compute    → DEPLOYED (api: ysv0mij8t3.execute-api.us-east-1.amazonaws.com/v1)
+- CloudSentinel-Frontend   → DEPLOYED (https://dj0hn1yjeg2gw.cloudfront.net)
+
+## Key IDs (us-east-1)
+- User Pool ID:    us-east-1_7edoTifa1
+- App Client ID:   32vr8rg7iq0jbdtrlqqhaf2v1o
+- API base URL:    https://ysv0mij8t3.execute-api.us-east-1.amazonaws.com/v1
+- CloudFront URL:  https://dj0hn1yjeg2gw.cloudfront.net
+- S3 Site Bucket:  cloudsentinel-frontend-sitebucket397a1860-vsw1wglssxpa
+- CF Dist ID:      ECXL04Z188U3L
 
 ## Training Notes
-- Always use `.venv-training` (Python 3.11) to retrain — sklearn must be 1.2.1 to match the SageMaker container
+- Always use `.venv-training` (Python 3.11) to retrain — sklearn must be 1.2.1 to match SageMaker container
 - `.venv` (Python 3.12) is for CDK only
 - Retrain command: `source .venv-training/bin/activate && cd ml/training && python3 train.py`
+- After retrain: must delete SageMaker endpoint/config/model manually before cdk deploy CloudSentinel-ML
+  (CDK does not detect S3 content changes at the same URI)
 
-## Bugs Fixed (all sessions)
-- compute_stack.py: **auth_opts.__dict__ leaked jsii internal _values field
-  → Fixed: pass authorization_type and authorizer as explicit kwargs to add_method()
-- compute_stack.py: /alerts and /tenants routes had NO Cognito authorizer (security bug)
-  → Fixed: all 4 API routes now require a valid Cognito JWT
-- frontend_stack.py: S3Origin deprecated
-  → Fixed: replaced with S3BucketOrigin.with_origin_access_control() (OAC)
-- alerting_stack.py: SNS topic created but never published to (dead code)
-  → Fixed: stream-processor Lambda now publishes to SNS on every confirmed anomaly
-- alerting_stack.py: alert_table parameter accepted but never used
-  → Fixed: removed unused parameter
-- ml/training/requirements.txt: boto3 and joblib missing
-  → Fixed: added boto3>=1.34.0 and joblib>=1.3.0
-- ml_stack.py: IAM Role description had em dash (—) rejected by AWS IAM
-  → Fixed: replaced with plain hyphen (-)
-- ml_stack.py: ml.t3.medium no longer valid SageMaker instance type
-  → Fixed: changed to ml.t2.medium
-- ml_stack.py: race condition — SageMaker model created before IAM policy attached
-  → Fixed: added node.add_dependency(role.DefaultPolicy) on CfnModel
-- ml/training/train.py: --bucket arg required, inconvenient
-  → Fixed: auto-detects bucket from CloudSentinel-Storage CloudFormation output
-- ml/inference/serve.py: str | bytes annotation incompatible with Python 3.9 container
-  → Fixed: added from __future__ import annotations
-- ml/training/train.py: serve.py packaged at tarball root, container expects code/ subdirectory
-  → Fixed: serve.py now placed at code/serve.py inside model.tar.gz
-- ml_stack.py: SAGEMAKER_SUBMIT_DIRECTORY not set, container used broken pip install path
-  → Fixed: added SAGEMAKER_SUBMIT_DIRECTORY=/opt/ml/model/code
-- .gitignore: __pycache__ files were already tracked in git
-  → Fixed: git rm --cached; added *.swp, cdk.context.json, model artifacts to .gitignore
+## Scoring Notes
+- serve.py uses decision_function (NOT score_samples)
+- decision_function: positive = normal, negative = anomaly
+- Severity thresholds: critical < -0.04 | high < -0.01 | medium < 0.03 | normal ≥ 0.03
+- Normal machine data (CPU 1-15%) scores ~+0.08, well above threshold
 
 ## Environment Notes
 - Region: us-east-1 (set in cdk.json)
@@ -113,21 +131,10 @@ cloudsentinel/
 - CDK installed locally via npm install (package.json)
 - cdk.context.json is gitignored — auto-generated per account on first cdk synth
 - model.tar.gz is gitignored — generated by train.py and lives in S3
-
-## First Time Setup (per developer)
-python3 -m venv .venv
-source .venv/bin/activate       # Mac/Linux
-pip install -r requirements.txt
-npm install                     # installs aws-cdk CLI into node_modules/
-npx cdk bootstrap               # one-time per AWS account/region
-cdk deploy --all
-
-## Run Locally
-cd ml/training && python train.py --no-upload   # dry-run, no S3
-cd ../../docker && docker compose up
+- API URL changes on every Compute stack redeploy — update frontend/.env and scripts/send_telemetry.py
 
 ## Stack Dependency Order
-Storage → ML → Alerting → Compute → Frontend
+Network, Auth, Storage → Streaming, ML, Alerting → Compute → Frontend
 (enforced via add_dependency() in app.py)
 
 PASTE THIS FILE AT THE START OF EVERY CLAUDE SESSION.

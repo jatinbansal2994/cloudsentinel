@@ -10,7 +10,7 @@ For each batch of telemetry events:
 SageMaker response format (from ml/inference/serve.py):
   {"predictions": [1 or -1], "scores": [-0.34]}
    predictions: 1 = normal, -1 = anomaly
-   scores:      more negative = more anomalous (threshold ≈ -0.10)
+   scores:      more negative = more anomalous (SCORE_THRESHOLD = 0.03)
 """
 import json
 import os
@@ -30,7 +30,7 @@ ALERT_TOPIC_ARN    = os.environ.get('ALERT_TOPIC_ARN', '')
 
 # Score below this is stored even if prediction == 1 (catches borderline cases)
 # Isolation Forest scores are negative — more negative = more anomalous
-SCORE_THRESHOLD = float(os.environ.get('ANOMALY_THRESHOLD', '-0.10'))
+SCORE_THRESHOLD = float(os.environ.get('ANOMALY_THRESHOLD', '0.03'))
 
 alert_table = dynamodb.Table(ALERT_TABLE)
 
@@ -102,10 +102,10 @@ def invoke_sagemaker(payload: dict) -> tuple[int, float]:
 
 
 def severity(score: float) -> str:
-    """Map an Isolation Forest score to a severity label."""
-    if score < -0.35:  return 'critical'
-    if score < -0.25:  return 'high'
-    if score < -0.10:  return 'medium'
+    """Map an Isolation Forest decision_function score to a severity label."""
+    if score < -0.04:  return 'critical'
+    if score < -0.01:  return 'high'
+    if score <  0.03:  return 'medium'
     return 'low'
 
 

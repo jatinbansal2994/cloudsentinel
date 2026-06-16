@@ -84,14 +84,14 @@ def predict_fn(input_data: np.ndarray, model_artifacts: dict) -> dict:
 
     Returns a dict with:
       predictions — list of int  (1 = normal, -1 = anomaly)
-      scores      — list of float (lower = more anomalous; threshold ≈ –0.1)
+      scores      — list of float (lower = more anomalous; flag threshold = 0.03)
     """
     model  = model_artifacts["model"]
     scaler = model_artifacts["scaler"]
 
     X_scaled    = scaler.transform(input_data)
     predictions = model.predict(X_scaled)       # ndarray of 1 / -1
-    scores      = model.score_samples(X_scaled)  # raw anomaly scores
+    scores      = model.decision_function(X_scaled)  # positive=normal, negative=anomaly
 
     n_anomalies = int((predictions == -1).sum())
     logger.info(f"Scored {len(predictions)} records — {n_anomalies} anomaly/anomalies flagged")

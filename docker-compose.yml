@@ -1,0 +1,12 @@
+services:
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        # Defaults point at the live deployed API — override via .env or export before running
+        VITE_API_ENDPOINT:        ${VITE_API_ENDPOINT:-https://ysv0mij8t3.execute-api.us-east-1.amazonaws.com/v1/}
+        VITE_USER_POOL_ID:        ${VITE_USER_POOL_ID:-us-east-1_7edoTifa1}
+        VITE_USER_POOL_CLIENT_ID: ${VITE_USER_POOL_CLIENT_ID:-32vr8rg7iq0jbdtrlqqhaf2v1o}
+    ports:
+      - "3000:80"
+    restart: unless-stopped

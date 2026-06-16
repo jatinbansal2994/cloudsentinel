@@ -4,16 +4,26 @@ import Login from "./pages/Login";
 import Alerts from "./pages/Alerts";
 import Tenants from "./pages/Tenants";
 import Ingest from "./pages/Ingest";
+import Admin from "./pages/Admin";
 
-const NAV = [
-  { id: "alerts",  label: "Alerts"  },
-  { id: "tenants", label: "Tenants" },
-  { id: "ingest",  label: "Ingest"  },
+const BASE_NAV = [
+  { id: "alerts",  label: "Alerts"   },
+  { id: "tenants", label: "Account"  },
+  { id: "ingest",  label: "Ingest"   },
 ];
 
 function Dashboard() {
   const { user, logout } = useAuth();
   const [page, setPage] = useState("alerts");
+
+  const groups = user?.["cognito:groups"] ?? [];
+  const isAdmin = Array.isArray(groups)
+    ? groups.includes("cloudsentinel-admins")
+    : groups === "cloudsentinel-admins";
+
+  const nav = isAdmin
+    ? [...BASE_NAV, { id: "admin", label: "Admin" }]
+    : BASE_NAV;
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
@@ -32,7 +42,7 @@ function Dashboard() {
 
       <div className="flex flex-1">
         <nav className="w-48 bg-white border-r pt-6 px-3 space-y-1">
-          {NAV.map((n) => (
+          {nav.map((n) => (
             <button
               key={n.id}
               onClick={() => setPage(n.id)}
@@ -51,6 +61,7 @@ function Dashboard() {
           {page === "alerts"  && <Alerts />}
           {page === "tenants" && <Tenants />}
           {page === "ingest"  && <Ingest />}
+          {page === "admin"   && <Admin />}
         </main>
       </div>
     </div>

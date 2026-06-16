@@ -98,12 +98,28 @@ class ComputeStack(cdk.Stack):
             code=_lambda.Code.from_asset("lambda/api-handler"),
             timeout=cdk.Duration.seconds(30),
             memory_size=256,
-            environment=shared_env,
+            environment={
+                **shared_env,
+                "USER_POOL_ID": user_pool.user_pool_id,
+                "ADMIN_GROUP":  "cloudsentinel-admins",
+            },
         )
 
         tenant_table.grant_read_write_data(api_handler)
         alert_table.grant_read_data(api_handler)
         stream.grant_write(api_handler)
+
+        # Allow api-handler to create/manage Cognito users (admin tenant provisioning)
+        api_handler.add_to_role_policy(
+            iam.PolicyStatement(
+                actions=[
+                    "cognito-idp:AdminCreateUser",
+                    "cognito-idp:AdminSetUserPassword",
+                    "cognito-idp:ListUsersInGroup",
+                ],
+                resources=[user_pool.user_pool_arn],
+            )
+        )
 
         # ── API Gateway ────────────────────────────────────────────────────
         self.api = apigw.RestApi(
@@ -139,6 +155,22 @@ class ComputeStack(cdk.Stack):
             authorizer=authorizer,
         )
         tenants.add_method("POST", integration,
+            authorization_type=apigw.AuthorizationType.COGNITO,
+            authorizer=authorizer,
+        )
+
+        # Admin routes — still Cognito-protected; is_admin() enforced in Lambda
+        admin = self.api.root.add_resource("admin")
+        admin_tenants = admin.add_resource("tenants")
+        admin_tenants.add_method("GET",  integration,
+            authorization_type=apigw.AuthorizationType.COGNITO,
+            authorizer=authorizer,
+        )
+        admin_tenants.add_method("POST", integration,
+            authorization_type=apigw.AuthorizationType.COGNITO,
+            authorizer=authorizer,
+        )
+        admin.add_resource("alerts").add_method("GET", integration,
             authorization_type=apigw.AuthorizationType.COGNITO,
             authorizer=authorizer,
         )

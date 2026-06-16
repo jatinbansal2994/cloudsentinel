@@ -2,7 +2,7 @@ import { useState } from "react";
 import { postIngest } from "../api";
 
 const DEFAULT_PAYLOAD = JSON.stringify(
-  { tenantId: "tenant-1", metrics: { cpu: 0.45, memory: 0.6, latency: 120, error_rate: 0.01 } },
+  { cpu_util: 0.45, memory_util: 0.60, latency_ms: 120, error_rate: 0.01, request_count: 200 },
   null,
   2
 );

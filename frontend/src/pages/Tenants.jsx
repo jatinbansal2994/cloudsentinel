@@ -1,33 +1,38 @@
 import { useState, useEffect } from "react";
 import { getTenants, postTenant } from "../api";
+import { useAuth } from "../useAuth.jsx";
 
 export default function Tenants() {
-  const [tenants, setTenants] = useState([]);
+  const { user } = useAuth();
+  const [tenant, setTenant] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const [form, setForm] = useState({ tenantId: "", name: "", plan: "free" });
+  const [form, setForm] = useState({ name: "", plan: "free" });
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState("");
 
   function load() {
     setLoading(true);
     getTenants()
-      .then(setTenants)
+      .then((items) => {
+        const t = items[0] ?? null;
+        setTenant(t);
+        if (t) setForm({ name: t.name ?? "", plan: t.plan ?? "free" });
+      })
       .catch((e) => setError(e.message))
       .finally(() => setLoading(false));
   }
 
   useEffect(load, []);
 
-  async function handleCreate(e) {
+  async function handleSave(e) {
     e.preventDefault();
     setSubmitting(true);
     setSuccess("");
     setError("");
     try {
       await postTenant(form);
-      setSuccess(`Tenant "${form.tenantId}" created.`);
-      setForm({ tenantId: "", name: "", plan: "free" });
+      setSuccess("Account saved.");
       load();
     } catch (err) {
       setError(err.message);
@@ -37,55 +42,25 @@ export default function Tenants() {
   }
 
   return (
-    <div className="space-y-8">
+    <div className="max-w-lg space-y-6">
       <div>
-        <h2 className="text-lg font-semibold text-gray-800 mb-4">Tenants</h2>
-        {loading ? (
-          <p className="text-gray-500 text-sm">Loading…</p>
-        ) : tenants.length === 0 ? (
-          <p className="text-gray-500 text-sm">No tenants yet.</p>
-        ) : (
-          <div className="overflow-x-auto">
-            <table className="min-w-full text-sm border-collapse">
-              <thead>
-                <tr className="bg-gray-100 text-gray-600 text-left">
-                  <th className="px-4 py-2 font-medium">Tenant ID</th>
-                  <th className="px-4 py-2 font-medium">Name</th>
-                  <th className="px-4 py-2 font-medium">Plan</th>
-                </tr>
-              </thead>
-              <tbody>
-                {tenants.map((t) => (
-                  <tr key={t.tenantId} className="border-t hover:bg-gray-50">
-                    <td className="px-4 py-2 font-mono text-xs text-gray-500">{t.tenantId}</td>
-                    <td className="px-4 py-2">{t.name}</td>
-                    <td className="px-4 py-2 capitalize">{t.plan}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        )}
+        <h2 className="text-lg font-semibold text-gray-800">My Account</h2>
+        <p className="text-sm text-gray-500 mt-1">
+          Tenant ID: <span className="font-mono text-indigo-600">{user?.["custom:tenantId"] ?? "—"}</span>
+        </p>
       </div>
 
-      <div className="border-t pt-6">
-        <h3 className="text-base font-semibold text-gray-800 mb-4">Add Tenant</h3>
-        <form onSubmit={handleCreate} className="space-y-4 max-w-sm">
+      {loading ? (
+        <p className="text-gray-500 text-sm">Loading…</p>
+      ) : (
+        <form onSubmit={handleSave} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Tenant ID</label>
-            <input
-              value={form.tenantId}
-              onChange={(e) => setForm({ ...form, tenantId: e.target.value })}
-              required
-              className="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Name</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Display name</label>
             <input
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
               required
+              placeholder="e.g. Acme Corp"
               className="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
           </div>
@@ -108,10 +83,10 @@ export default function Tenants() {
             disabled={submitting}
             className="bg-indigo-600 text-white px-4 py-2 rounded text-sm font-medium hover:bg-indigo-700 disabled:opacity-50"
           >
-            {submitting ? "Creating…" : "Create Tenant"}
+            {submitting ? "Saving…" : tenant ? "Save changes" : "Set up account"}
           </button>
         </form>
-      </div>
+      )}
     </div>
   );
 }

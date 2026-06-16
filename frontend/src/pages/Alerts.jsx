@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 import { getAlerts } from "../api";
 
 const SEVERITY = {
-  high:   "bg-red-100 text-red-700",
-  medium: "bg-yellow-100 text-yellow-700",
-  low:    "bg-green-100 text-green-700",
+  critical: "bg-red-700 text-white",
+  high:     "bg-red-100 text-red-700",
+  medium:   "bg-yellow-100 text-yellow-700",
+  low:      "bg-green-100 text-green-700",
 };
 
 export default function Alerts() {
@@ -50,7 +51,7 @@ export default function Alerts() {
                       {a.severity ?? "unknown"}
                     </span>
                   </td>
-                  <td className="px-4 py-2 text-gray-500">{a.timestamp ? new Date(a.timestamp).toLocaleString() : "—"}</td>
+                  <td className="px-4 py-2 text-gray-500">{a.createdAt ? new Date(a.createdAt).toLocaleString() : "—"}</td>
                 </tr>
               ))}
             </tbody>

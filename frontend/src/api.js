@@ -18,7 +18,11 @@ async function request(method, path, body) {
   return res.json();
 }
 
-export const getAlerts  = ()         => request("GET",  "/alerts");
-export const getTenants = ()         => request("GET",  "/tenants");
-export const postTenant = (data)     => request("POST", "/tenants", data);
-export const postIngest = (data)     => request("POST", "/ingest",  data);
+export const getAlerts  = ()     => request("GET",  "/alerts").then(r => r.alerts ?? []);
+export const getTenants = ()     => request("GET",  "/tenants").then(r => r.tenant ? [r.tenant] : []);
+export const postTenant = (data) => request("POST", "/tenants", data);
+export const postIngest = (data) => request("POST", "/ingest",  data);
+
+export const getAdminTenants = ()     => request("GET",  "/admin/tenants").then(r => r.tenants ?? []);
+export const postAdminTenant = (data) => request("POST", "/admin/tenants", data);
+export const getAdminAlerts  = ()     => request("GET",  "/admin/alerts").then(r => r.alerts ?? []);
