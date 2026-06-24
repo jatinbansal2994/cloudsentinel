@@ -217,7 +217,9 @@ npx cdk deploy CloudSentinel-Compute CloudSentinel-Frontend --require-approval n
 
 ### Step 5 — Create a tenant user
 
-Each tenant needs a Cognito user with `custom:tenantId` set at creation time (the attribute is immutable after creation):
+Each tenant needs a Cognito user with `custom:tenantId` set at creation time (the attribute is immutable after creation).
+
+> **Important:** The email in `--username` and `Name="email",Value=` must be **exactly the same** — a typo between the two will cause `InvalidParameterException` and the user won't be created.
 
 ```bash
 USER_POOL_ID=$(aws cloudformation describe-stacks --stack-name CloudSentinel-Auth \
@@ -230,6 +232,7 @@ aws cognito-idp admin-create-user \
   --message-action SUPPRESS \
   --user-attributes \
     Name="email",Value="tenant@example.com" \
+    Name="email_verified",Value="true" \
     Name="custom:tenantId",Value="tenant-acme"
 
 aws cognito-idp admin-set-user-password \
