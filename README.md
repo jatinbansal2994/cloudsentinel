@@ -219,6 +219,14 @@ npx cdk deploy CloudSentinel-Compute CloudSentinel-Frontend --require-approval n
 
 Each tenant needs a Cognito user with `custom:tenantId` set at creation time (the attribute is immutable after creation).
 
+**Replace these 3 values before running the commands:**
+
+| Placeholder | What to put | Example |
+|-------------|-------------|---------|
+| `tenant@example.com` | The user's real email address | `harshal@gmail.com` |
+| `tenant-acme` | A unique ID for this tenant (no spaces) | `tenant-harshal` |
+| `SecurePass123!` | A permanent password (min 8 chars, upper + lower + number + symbol) | `MyPass@2024` |
+
 > **Important:** The email in `--username` and `Name="email",Value=` must be **exactly the same** — a typo between the two will cause `InvalidParameterException` and the user won't be created.
 
 ```bash
