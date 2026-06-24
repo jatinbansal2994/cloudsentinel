@@ -156,8 +156,13 @@ python3.11 -m venv .venv-training
 source .venv-training/bin/activate
 
 pip install "numpy>=1.24,<2.0" scikit-learn==1.2.1 pandas boto3 joblib
+```
 
-# Verify sklearn version matches the SageMaker container
+> **Note:** The PyPI package is called `scikit-learn` — do **not** run `pip install sklearn`,
+> that package is deprecated and will fail. Once installed, it is imported as `sklearn` in Python.
+
+```bash
+# Verify the version matches the SageMaker container
 python3 -c "import sklearn; print(sklearn.__version__)"
 # Expected: 1.2.1
 
@@ -174,7 +179,7 @@ All commands run from the repo root.
 
 ```bash
 source .venv/bin/activate
-cdk deploy CloudSentinel-Network CloudSentinel-Auth CloudSentinel-Storage \
+npx cdk deploy CloudSentinel-Network CloudSentinel-Auth CloudSentinel-Storage \
            CloudSentinel-Streaming CloudSentinel-Alerting --require-approval never
 ```
 
@@ -192,7 +197,7 @@ deactivate
 
 ```bash
 source .venv/bin/activate
-cdk deploy CloudSentinel-ML --require-approval never
+npx cdk deploy CloudSentinel-ML --require-approval never
 ```
 
 SageMaker pulls the container image on first deploy — allow 5–8 minutes. Confirm before continuing:
@@ -207,7 +212,7 @@ aws sagemaker describe-endpoint \
 ### Step 4 — Compute and frontend
 
 ```bash
-cdk deploy CloudSentinel-Compute CloudSentinel-Frontend --require-approval never
+npx cdk deploy CloudSentinel-Compute CloudSentinel-Frontend --require-approval never
 ```
 
 ### Step 5 — Create a tenant user
@@ -408,8 +413,8 @@ aws sagemaker delete-endpoint --endpoint-name cloudsentinel-anomaly-detector
 aws sagemaker delete-endpoint-config --endpoint-config-name cloudsentinel-endpoint-config
 aws sagemaker delete-model --model-name cloudsentinel-isolation-forest
 
-cdk destroy CloudSentinel-ML --force
-cdk deploy CloudSentinel-ML --require-approval never
+npx cdk destroy CloudSentinel-ML --force
+npx cdk deploy CloudSentinel-ML --require-approval never
 ```
 
 ---
@@ -418,7 +423,7 @@ cdk deploy CloudSentinel-ML --require-approval never
 
 ```bash
 source .venv/bin/activate
-cdk destroy --all --force
+npx cdk destroy --all --force
 ```
 
 The Kinesis stream has `RemovalPolicy.DESTROY` and is deleted automatically. All other stateful resources (DynamoDB, S3) are also set to DESTROY.
@@ -433,7 +438,7 @@ A previous destroy left the stream behind. Delete it and retry:
 
 ```bash
 aws kinesis delete-stream --stream-name cloudsentinel-telemetry
-cdk deploy CloudSentinel-Streaming
+npx cdk deploy CloudSentinel-Streaming
 ```
 
 ### `No module named 'distutils'` — installing sklearn
