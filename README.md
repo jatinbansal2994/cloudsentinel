@@ -361,7 +361,7 @@ python scripts/send_telemetry.py --token "<token>" --interval 10
 
 ## Email Alerts
 
-The SNS topic `cloudsentinel-alerts` publishes every anomaly. Subscribe a tenant email with a filter so they only receive their own alerts:
+The SNS topic `cloudsentinel-alerts` publishes every anomaly. Run this **once per tenant** after deploy to subscribe their email — they will only receive alerts for their own tenant:
 
 ```bash
 TOPIC_ARN=$(aws cloudformation describe-stacks --stack-name CloudSentinel-Alerting \
@@ -370,11 +370,13 @@ TOPIC_ARN=$(aws cloudformation describe-stacks --stack-name CloudSentinel-Alerti
 aws sns subscribe \
   --topic-arn "$TOPIC_ARN" \
   --protocol email \
-  --notification-endpoint tenant@example.com \
-  --attributes '{"FilterPolicy":"{\"tenantId\":[\"tenant-acme\"]}"}'
+  --notification-endpoint harshal@gmail.com \
+  --attributes '{"FilterPolicy":"{\"tenantId\":[\"tenant-harshal\"]}"}'
 ```
 
-AWS sends a confirmation email — click the link to activate the subscription.
+Replace `harshal@gmail.com` and `tenant-harshal` with the email and tenant ID used in **Step 5**.
+
+AWS sends a confirmation email to that address — **they must click the link** to activate the subscription. Once confirmed, anomaly emails arrive within ~30 seconds of detection.
 
 ---
 
