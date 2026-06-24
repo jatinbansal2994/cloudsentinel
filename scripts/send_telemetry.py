@@ -15,6 +15,7 @@ Get a token by running:
 """
 import argparse
 import json
+import os
 import time
 import random
 import urllib.request
@@ -26,7 +27,10 @@ try:
 except ImportError:
     HAS_PSUTIL = False
 
-API_ENDPOINT = "https://ysv0mij8t3.execute-api.us-east-1.amazonaws.com/v1/ingest"
+API_ENDPOINT = os.environ.get(
+    "CLOUDSENTINEL_API_ENDPOINT",
+    "https://<api-id>.execute-api.us-east-1.amazonaws.com/v1/ingest",
+)
 
 
 def real_metrics():
