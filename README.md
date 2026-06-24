@@ -88,12 +88,37 @@ brew install python@3.11
 
 ### Configure AWS credentials
 
+#### 1. Create an Access Key
+
+1. Log in to [console.aws.amazon.com](https://console.aws.amazon.com)
+2. Top-right → your name → **Security credentials**
+3. Scroll to **Access keys** → **Create access key**
+4. Choose **CLI** → create → copy both values
+
+> For a personal / dev account attach the **AdministratorAccess** policy to your IAM user — CDK needs broad permissions to create IAM roles, Lambda functions, S3 buckets, etc.
+
+#### 2. Run aws configure
+
 ```bash
 aws configure
-# Access Key ID · Secret Key · Region (us-east-1) · Output (json)
-
-aws sts get-caller-identity   # verify
 ```
+
+Fill in the four prompts:
+
+```
+AWS Access Key ID:     <your access key>
+AWS Secret Access Key: <your secret key>
+Default region name:   us-east-1
+Default output format: json
+```
+
+#### 3. Verify
+
+```bash
+aws sts get-caller-identity
+```
+
+Should print your account ID, user ID, and ARN. If this command succeeds, CDK will work.
 
 ---
 
