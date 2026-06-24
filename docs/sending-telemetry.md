@@ -38,11 +38,19 @@ pip install psutil          # reads real CPU and memory from your machine
 
 ## Step 2 — Get an auth token
 
-Every API call requires a Cognito JWT. Run the helper script to fetch one:
+Every API call requires a Cognito JWT. If you haven't already, run the post-deploy script
+first — it exports the Cognito pool IDs that `get_token.py` needs:
+
+```bash
+source scripts/post-deploy.sh   # only needed once per shell session
+```
+
+Then fetch a token:
 
 ```bash
 source .venv/bin/activate
 python scripts/get_token.py
+# prompts for your email and password
 ```
 
 Copy the long token string it prints. Tokens expire after **1 hour** — run the script again if you get `401` errors.

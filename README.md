@@ -209,36 +209,25 @@ aws cognito-idp admin-set-user-password \
   --permanent
 ```
 
-### Step 6 — Deploy the frontend
+### Step 6 — Auto-populate config and deploy the frontend
 
-Get the stack outputs, fill in `frontend/.env`, build, and sync to S3:
+`post-deploy.sh` reads all CloudFormation outputs and writes `frontend/.env`, `PROJECT.md`,
+and exports the env vars the helper scripts need — all in one command:
 
 ```bash
-# Get values
-aws cloudformation describe-stacks --stack-name CloudSentinel-Auth \
-  --query "Stacks[0].Outputs" --output table
-aws cloudformation describe-stacks --stack-name CloudSentinel-Compute \
-  --query "Stacks[0].Outputs" --output table
-aws cloudformation describe-stacks --stack-name CloudSentinel-Frontend \
-  --query "Stacks[0].Outputs" --output table
-
-# Create frontend/.env from the values above
-cp frontend/.env.example frontend/.env
-# Edit frontend/.env with VITE_USER_POOL_ID, VITE_USER_POOL_CLIENT_ID, VITE_API_ENDPOINT
-
-# Build and sync
-cd frontend && npm install && npm run build && cd ..
-
-BUCKET=$(aws cloudformation describe-stacks --stack-name CloudSentinel-Frontend \
-  --query "Stacks[0].Outputs[?OutputKey=='SiteBucketName'].OutputValue" --output text)
-DIST_ID=$(aws cloudformation describe-stacks --stack-name CloudSentinel-Frontend \
-  --query "Stacks[0].Outputs[?OutputKey=='CloudFrontUrl'].OutputValue" --output text \
-  | sed 's|https://||' | xargs -I{} aws cloudfront list-distributions \
-  --query "DistributionList.Items[?DomainName=='{}'].Id" --output text)
-
-aws s3 sync frontend/dist/ "s3://$BUCKET" --delete
-aws cloudfront create-invalidation --distribution-id "$DIST_ID" --paths "/*"
+source scripts/post-deploy.sh
 ```
+
+Then build and sync (the script prints the exact commands with real values at the end):
+
+```bash
+cd frontend && npm install && npm run build && cd ..
+aws s3 sync frontend/dist/ s3://<SiteBucket> --delete
+aws cloudfront create-invalidation --distribution-id <CF_DIST_ID> --paths "/*"
+```
+
+> **Note:** Use `source` (not `bash`) so the exported env vars persist in your shell session
+> and the helper scripts (`get_token.py`, `send_telemetry.py`) work without extra config.
 
 ### Step 7 — Verify all stacks
 
@@ -333,7 +322,8 @@ Quick start:
 ```bash
 pip install psutil
 source .venv/bin/activate
-python scripts/get_token.py          # copy the token
+source scripts/post-deploy.sh        # exports pool IDs — skip if already done this session
+python scripts/get_token.py          # prompts for email + password, prints token
 python scripts/send_telemetry.py --token "<token>" --interval 10
 ```
 
