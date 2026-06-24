@@ -267,8 +267,12 @@ aws s3 sync frontend/dist/ s3://<SiteBucket> --delete
 aws cloudfront create-invalidation --distribution-id <CF_DIST_ID> --paths "/*"
 ```
 
+> **Note:** `post-deploy.sh` prints the exact `aws s3 sync` and `aws cloudfront` commands with your real bucket name and distribution ID filled in at the bottom of its output — copy and run those instead of the placeholders above.
+
 > **Note:** Use `source` (not `bash`) so the exported env vars persist in your shell session
 > and the helper scripts (`get_token.py`, `send_telemetry.py`) work without extra config.
+
+Once the CloudFront invalidation completes, open the dashboard URL printed by `post-deploy.sh` (looks like `https://xxxxxxxxxxxx.cloudfront.net`) in your browser. Log in with the email and password you set in Step 5.
 
 ### Step 7 — Verify all stacks
 
