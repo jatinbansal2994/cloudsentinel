@@ -8,8 +8,6 @@
 # Usage:
 #   source scripts/post-deploy.sh        ← 'source' so exports persist in shell
 # ─────────────────────────────────────────────────────────────────────────────
-set -euo pipefail
-
 REGION="us-east-1"
 
 _out() {
@@ -17,7 +15,7 @@ _out() {
         --stack-name "$1" \
         --region "$REGION" \
         --query "Stacks[0].Outputs[?OutputKey=='$2'].OutputValue" \
-        --output text
+        --output text 2>/dev/null
 }
 
 echo "Reading CloudFormation outputs..."
@@ -28,6 +26,12 @@ CLIENT_ID=$(_out    "CloudSentinel-Frontend" "UserPoolClientId")
 API_ENDPOINT=$(_out "CloudSentinel-Frontend" "ApiEndpoint")
 CF_URL=$(_out       "CloudSentinel-Frontend" "CloudFrontUrl")
 SITE_BUCKET=$(_out  "CloudSentinel-Frontend" "SiteBucketName")
+
+if [ -z "$USER_POOL_ID" ] || [ -z "$API_ENDPOINT" ] || [ -z "$CF_URL" ]; then
+    echo "ERROR: Could not read CloudFormation outputs. Make sure all stacks are deployed:"
+    echo "  npx cdk deploy --all"
+    return 1
+fi
 
 # Strip trailing slash from API endpoint (CDK adds one)
 API_ENDPOINT="${API_ENDPOINT%/}"
