@@ -13,7 +13,6 @@ Multi-tenant SaaS observability platform on AWS. Tenants push telemetry to a RES
 - [Running Locally with Docker](#running-locally-with-docker)
 - [CI/CD](#cicd)
 - [Sending Telemetry](#sending-telemetry)
-- [Email Alerts](#email-alerts)
 - [Running Tests](#running-tests)
 - [Retraining the Model](#retraining-the-model)
 - [Teardown](#teardown)
@@ -285,6 +284,25 @@ aws cloudformation list-stacks \
 
 Expected: 8 stacks — Network, Auth, Storage, Streaming, ML, Alerting, Compute, Frontend.
 
+### Step 8 — Subscribe tenants to email alerts
+
+Run this **once per tenant** to wire up their email. They will only receive alerts for their own tenant:
+
+```bash
+TOPIC_ARN=$(aws cloudformation describe-stacks --stack-name CloudSentinel-Alerting \
+  --query "Stacks[0].Outputs[?OutputKey=='AlertTopicArn'].OutputValue" --output text)
+
+aws sns subscribe \
+  --topic-arn "$TOPIC_ARN" \
+  --protocol email \
+  --notification-endpoint tenant@example.com \
+  --attributes '{"FilterPolicy":"{\"tenantId\":[\"tenant-acme\"]}"}'
+```
+
+Replace `tenant@example.com` and `tenant-acme` with the values used in Step 5.
+
+AWS sends a confirmation email immediately — **the tenant must click the link** to activate the subscription. Once confirmed, anomaly emails arrive within ~30 seconds of detection.
+
 ---
 
 ## Frontend
@@ -360,38 +378,47 @@ A GitHub Actions workflow (`.github/workflows/deploy.yml`) runs on every push to
 
 ## Sending Telemetry
 
-See **[docs/sending-telemetry.md](docs/sending-telemetry.md)** for a full guide including how to stream your real machine's CPU and memory into the pipeline.
+`scripts/send_telemetry.py` streams metrics into the pipeline so you can see anomaly detection and email alerts working end-to-end. See **[docs/sending-telemetry.md](docs/sending-telemetry.md)** for the full reference.
 
-Quick start:
+### 1. Install the optional dependency
 
 ```bash
-pip install psutil
+pip install psutil   # reads real CPU and memory; omit to use simulated values instead
+```
+
+### 2. Get an auth token
+
+Every API call requires a Cognito JWT. Run once per shell session:
+
+```bash
 source .venv/bin/activate
-source scripts/post-deploy.sh        # exports pool IDs — skip if already done this session
-python scripts/get_token.py          # prompts for email + password, prints token
-python scripts/send_telemetry.py --token "<token>" --interval 10
+source scripts/post-deploy.sh   # exports pool IDs — skip if already done this session
+python scripts/get_token.py     # prompts for email + password, prints token
 ```
 
----
+Copy the token it prints. Tokens expire after **1 hour** — rerun if you get `401` errors.
 
-## Email Alerts
+### 3. Send normal telemetry
 
-The SNS topic `cloudsentinel-alerts` publishes every anomaly. Run this **once per tenant** after deploy to subscribe their email — they will only receive alerts for their own tenant:
+Streams your real CPU and memory every 10 seconds. Normal values won't trigger alerts:
 
 ```bash
-TOPIC_ARN=$(aws cloudformation describe-stacks --stack-name CloudSentinel-Alerting \
-  --query "Stacks[0].Outputs[?OutputKey=='AlertTopicArn'].OutputValue" --output text)
-
-aws sns subscribe \
-  --topic-arn "$TOPIC_ARN" \
-  --protocol email \
-  --notification-endpoint harshal@gmail.com \
-  --attributes '{"FilterPolicy":"{\"tenantId\":[\"tenant-harshal\"]}"}'
+python scripts/send_telemetry.py --token "<paste-token-here>" --interval 10
 ```
 
-Replace `harshal@gmail.com` and `tenant-harshal` with the email and tenant ID used in **Step 5**.
+### 4. Trigger anomaly alerts
 
-AWS sends a confirmation email to that address — **they must click the link** to activate the subscription. Once confirmed, anomaly emails arrive within ~30 seconds of detection.
+Send extreme spike values — these will create alerts in DynamoDB, appear on the Alerts page, and fire the SNS email (if Step 8 is done):
+
+```bash
+# Critical alert (3 events)
+python scripts/send_telemetry.py --token "<paste-token-here>" --anomaly --count 3
+
+# Medium / high alert (5 events)
+python scripts/send_telemetry.py --token "<paste-token-here>" --mild --count 5
+```
+
+Alerts appear on the dashboard within ~30 seconds. If you subscribed an email in Step 8, the inbox notification arrives in the same window.
 
 ---
 
